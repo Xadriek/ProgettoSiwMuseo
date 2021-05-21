@@ -10,7 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>it.uniroma3.siw</groupId>
-	<artifactId>siw-spring-demo</artifactId>
+	<artifactId>siw-spring-museum</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring</name>
 	<packaging>jar</packaging>

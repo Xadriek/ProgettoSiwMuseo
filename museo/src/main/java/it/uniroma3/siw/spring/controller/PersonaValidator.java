@@ -1,4 +1,6 @@
+/*
 package it.uniroma3.siw.spring.controller;
+ 
 
 
 import org.slf4j.Logger;
@@ -39,3 +41,4 @@ public class PersonaValidator implements Validator {
 		return Persona.class.equals(aClass);
 	}
 }
+*/

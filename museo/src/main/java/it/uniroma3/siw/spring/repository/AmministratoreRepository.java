@@ -14,4 +14,7 @@ public interface AmministratoreRepository extends CrudRepository<Amministratore,
 	public List<Amministratore> findByNomeAndCognome(String nome, String cognome);
 
 	public List<Amministratore> findByNomeOrCognome(String nome, String cognome);
+
+	public List<Amministratore> findByUsername(String username);
+
 }

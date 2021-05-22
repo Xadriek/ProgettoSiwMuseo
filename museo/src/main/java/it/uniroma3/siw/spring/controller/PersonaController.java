@@ -1,4 +1,4 @@
-package it.uniroma3.siw.spring.controller;
+/*package it.uniroma3.siw.spring.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,4 +56,4 @@ public class PersonaController {
         }
         return "personaForm.html";
     }
-}
+}*/

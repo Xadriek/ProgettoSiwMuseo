@@ -18,18 +18,12 @@ public @Data class Opera {
 	@Column(nullable=false)
 	private String titolo;
 	
-	@Column(length=4)
+	@Column(nullable=false, length=4)
 	private Long anno;
 	
 	@Column(length=299)
 	private String descrizione;
 
-	public Opera(Long id, String titolo, Long anno, String descrizione) {
-		super();
-		this.id = id;
-		this.titolo = titolo;
-		this.anno = anno;
-		this.descrizione = descrizione;
-	}
+
 	
 }

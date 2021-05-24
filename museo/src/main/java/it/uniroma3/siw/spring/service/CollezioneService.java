@@ -33,7 +33,7 @@ public class CollezioneService {
 	}
 
 	@Transactional
-	public Collezione personaPerId(Long id) {
+	public Collezione collezionePerId(Long id) {
 		Optional<Collezione> optional = collezioneRepository.findById(id);
 		if (optional.isPresent())
 			return optional.get();

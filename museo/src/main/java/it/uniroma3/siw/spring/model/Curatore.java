@@ -32,21 +32,11 @@ public @Data class Curatore {
 	
 	@Column(nullable=false)
 	private String email;
-	
+	@Column(nullable=false)
 	private Long telefono;
 	
 	@Column(nullable=false)
 	private Long matricola;
 	
-	public Curatore(String nome, String cognome, LocalDate dataDiNascita, String luogoNascita, String email,
-			Long telefono, Long matricola) {
-		super();
-		this.nome = nome;
-		this.cognome = cognome;
-		this.dataDiNascita = dataDiNascita;
-		this.luogoNascita = luogoNascita;
-		this.email = email;
-		this.telefono = telefono;
-		this.matricola = matricola;
-	}
+	
 }

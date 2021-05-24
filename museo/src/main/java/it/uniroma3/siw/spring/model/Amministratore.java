@@ -27,13 +27,7 @@ public @Data class Amministratore {
 	@Column(nullable=false)
 	private String password;
 
-	public Amministratore(String nome, String cognome, String username, String password) {
-		super();
-		this.nome = nome;
-		this.cognome = cognome;
-		this.username = username;
-		this.password = password;
-	}
+	
 	
 	
 }

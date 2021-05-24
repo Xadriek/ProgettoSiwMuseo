@@ -33,7 +33,7 @@ public class OperaService {
 	}
 
 	@Transactional
-	public Opera personaPerId(Long id) {
+	public Opera operaPerId(Long id) {
 		Optional<Opera> optional = operaRepository.findById(id);
 		if (optional.isPresent())
 			return optional.get();

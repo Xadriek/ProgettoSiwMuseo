@@ -22,9 +22,5 @@ public @Data class Collezione {
 	@Column(length=299)
 	private String descrizione;
 	
-	public Collezione(String nome, String descrizione) {
-		super();
-		this.nome = nome;
-		this.descrizione = descrizione;
-	}
+	
 }

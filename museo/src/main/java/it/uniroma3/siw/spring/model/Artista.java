@@ -33,24 +33,15 @@ public @Data class Artista {
 	private String luogoNascita;
 	
 	private String luogoMorte;
-
+	
+	@Column(nullable=false)
 	private String nazionalità;
-
+	
+	@Column(nullable=false)
 	private String email;
 	
+	@Column(nullable=false)
 	private Long telefono;
 
-	public Artista(String nome, String cognome, LocalDate dataDiNascita, LocalDate dataDiMorte, String luogoNascita,
-			String luogoMorte, String nazionalità, String email, Long telefono) {
-		super();
-		this.nome = nome;
-		this.cognome = cognome;
-		this.dataDiNascita = dataDiNascita;
-		this.dataDiMorte = dataDiMorte;
-		this.luogoNascita = luogoNascita;
-		this.luogoMorte = luogoMorte;
-		this.nazionalità = nazionalità;
-		this.email = email;
-		this.telefono = telefono;
-	}
+	
 }

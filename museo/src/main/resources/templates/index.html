@@ -5,7 +5,12 @@
 	<header th:replace="fragments/base.html :: intestazione"></header>
     questa è la homepage dalla quale si puo accedere alla pagina di loginform oppure registerForm oppure alla pagina di informazioni del museo
     
-    
+    <div>
+			<a th:href="@{/login}">login utente</a>
+   		</div>
+   		<div>
+			<a th:href="@{/contatti}">informazioni museo</a>
+   		</div>
     <footer th:replace="fragments/base.html :: fondo"></footer>
 </body>
 </html>

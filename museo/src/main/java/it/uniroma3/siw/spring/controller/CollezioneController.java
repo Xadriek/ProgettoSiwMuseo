@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import it.uniroma3.siw.spring.controller.validator.CollezioneValidator;
 import it.uniroma3.siw.spring.model.Collezione;
 import it.uniroma3.siw.spring.service.CollezioneService;
 
@@ -26,7 +27,7 @@ public class CollezioneController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     
 
-    @RequestMapping(value="/addCollezione", method = RequestMethod.GET)
+    @RequestMapping(value="/admin/addCollezione", method = RequestMethod.GET)
     public String addCollezione(Model model) {
     	logger.debug("addCollezione");
     	model.addAttribute("collezione", new Collezione());
@@ -45,8 +46,8 @@ public class CollezioneController {
     		return "collezioni.html";
     }
     
-    @RequestMapping(value = "/persona", method = RequestMethod.POST)
-    public String newPersona(@ModelAttribute("persona") Collezione collezione, 
+    @RequestMapping(value = "/admin/collezione", method = RequestMethod.POST)
+    public String newCollezione(@ModelAttribute("collezione") Collezione collezione, 
     									Model model, BindingResult bindingResult) {
     	this.collezioneValidator.validate(collezione, bindingResult);
         if (!bindingResult.hasErrors()) {

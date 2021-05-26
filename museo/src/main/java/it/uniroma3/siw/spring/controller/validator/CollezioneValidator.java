@@ -1,5 +1,5 @@
 
-package it.uniroma3.siw.spring.controller;
+package it.uniroma3.siw.spring.controller.validator;
  
 
 
@@ -11,14 +11,14 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import it.uniroma3.siw.spring.model.Opera;
-import it.uniroma3.siw.spring.service.OperaService;
+import it.uniroma3.siw.spring.model.Collezione;
+import it.uniroma3.siw.spring.service.CollezioneService;
 
 
 @Component
-public class OperaValidator implements Validator {
+public class CollezioneValidator implements Validator {
 	@Autowired
-	private OperaService operaService;
+	private CollezioneService collezioneService;
 	
     private static final Logger logger = LoggerFactory.getLogger(OperaValidator.class);
 
@@ -31,7 +31,7 @@ public class OperaValidator implements Validator {
 
 		if (!errors.hasErrors()) {
 			logger.debug("confermato: valori non nulli");
-			if (this.operaService.alreadyExists((Opera)o)) {
+			if (this.collezioneService.alreadyExists((Collezione)o)) {
 				logger.debug("e' un duplicato");
 				errors.reject("duplicato");
 			}
@@ -40,6 +40,6 @@ public class OperaValidator implements Validator {
 
 	@Override
 	public boolean supports(Class<?> aClass) {
-		return Opera.class.equals(aClass);
+		return Collezione.class.equals(aClass);
 	}
 }

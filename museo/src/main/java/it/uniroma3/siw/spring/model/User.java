@@ -5,11 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.Data;
 
 @Entity
-public @Data class Amministratore {
+
+@Table(name = "users") // cambiamo nome perchè in postgres user e' una parola riservata
+public @Data class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,7 +30,4 @@ public @Data class Amministratore {
 	@Column(nullable=false)
 	private String password;
 
-	
-	
-	
 }

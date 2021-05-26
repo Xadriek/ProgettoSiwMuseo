@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import it.uniroma3.siw.spring.controller.validator.OperaValidator;
 import it.uniroma3.siw.spring.model.Opera;
 import it.uniroma3.siw.spring.service.OperaService;
 
@@ -26,7 +27,7 @@ public class OperaController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     
 
-    @RequestMapping(value="/addOpera", method = RequestMethod.GET)
+    @RequestMapping(value="/admin/addOpera", method = RequestMethod.GET)
     public String addOpera(Model model) {
     	logger.debug("addOpera");
     	model.addAttribute("opera", new Opera());
@@ -45,7 +46,7 @@ public class OperaController {
     		return "opere.html";
     }
     
-    @RequestMapping(value = "/opera", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/opera", method = RequestMethod.POST)
     public String newOpera(@ModelAttribute("opera") Opera opera, 
     									Model model, BindingResult bindingResult) {
     	this.operaValidator.validate(opera, bindingResult);

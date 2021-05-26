@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import lombok.Data;
@@ -44,6 +43,5 @@ public @Data class Curatore {
 	@OneToMany(mappedBy="curatore",cascade= {CascadeType.ALL})
 	private Map<Long,Collezione> collezioni;
 	
-	@ManyToOne
-	private Museo museo;
+
 }

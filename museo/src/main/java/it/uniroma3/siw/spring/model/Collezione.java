@@ -33,6 +33,5 @@ public @Data class Collezione {
 	
 	@ManyToOne
 	private Curatore curatore;
-	@ManyToOne
-	private Museo museo;
+
 }

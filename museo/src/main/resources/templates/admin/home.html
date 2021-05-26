@@ -6,10 +6,28 @@
     <div>
     	<h4 th:text="#{header.menuAdmin}">Menu</h4>
 		<div>
-			<a th:href="@{/prodotto}">Elenco prodotti</a>
+			<a href="collezione" th:href="@{/collezione}">Elenco collezioni</a>
    		</div>
    		<div>
-			<a th:href="@{/admin/prodotto}">Inserisci dati prodotto</a>
+			<a href="artista" th:href="@{/artista}">Elenco artisti</a>
+   		</div>
+   		<div>
+			<a href="opera" th:href="@{/opera}">Elenco opere</a>
+   		</div>
+   		<div>
+			<a href="curatore" th:href="@{/curatore}">Elenco curatori</a>
+   		</div>
+   		<div>
+			<a th:href="@{/admin/collezione}">Inserisci dati collezione</a>
+   		</div>
+   		<div>
+			<a th:href="@{/admin/artista}">Inserisci dati artista</a>
+   		</div>
+   		<div>
+			<a th:href="@{/admin/opera}">Inserisci dati opera</a>
+   		</div>
+   		<div>
+			<a th:href="@{/admin/curatore}">Inserisci dati curatore</a>
    		</div>
    		<div>
 			<a th:href="@{/logout}">Logout</a>

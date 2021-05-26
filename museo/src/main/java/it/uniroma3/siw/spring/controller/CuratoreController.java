@@ -27,7 +27,7 @@ public class CuratoreController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     
 
-    @RequestMapping(value="/addCuratore", method = RequestMethod.GET)
+    @RequestMapping(value="/admin/addCuratore", method = RequestMethod.GET)
     public String addCuratore(Model model) {
     	logger.debug("addCuratore");
     	model.addAttribute("persona", new Curatore());
@@ -46,7 +46,7 @@ public class CuratoreController {
     		return "curatori.html";
     }
     
-    @RequestMapping(value = "/curatore", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/curatore", method = RequestMethod.POST)
     public String newCuratore(@ModelAttribute("curatore") Curatore curatore, 
     									Model model, BindingResult bindingResult) {
     	this.curatoreValidator.validate(curatore, bindingResult);

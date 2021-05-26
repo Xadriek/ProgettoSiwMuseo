@@ -27,7 +27,7 @@ public class OperaController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     
 
-    @RequestMapping(value="/addOpera", method = RequestMethod.GET)
+    @RequestMapping(value="/admin/addOpera", method = RequestMethod.GET)
     public String addOpera(Model model) {
     	logger.debug("addOpera");
     	model.addAttribute("opera", new Opera());
@@ -46,7 +46,7 @@ public class OperaController {
     		return "opere.html";
     }
     
-    @RequestMapping(value = "/opera", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/opera", method = RequestMethod.POST)
     public String newOpera(@ModelAttribute("opera") Opera opera, 
     									Model model, BindingResult bindingResult) {
     	this.operaValidator.validate(opera, bindingResult);

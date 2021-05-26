@@ -1,12 +1,16 @@
 package it.uniroma3.siw.spring.model;
 
 import java.time.LocalDate;
+import java.util.Map;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -42,6 +46,12 @@ public @Data class Artista {
 	
 	@Column(nullable=false)
 	private Long telefono;
+	
+	@OneToMany(mappedBy="artista",cascade= CascadeType.ALL)
+	private Map<Long,Opera> opere;
+	
+	@ManyToOne
+	private Museo museo;
 
 	
 }

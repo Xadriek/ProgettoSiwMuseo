@@ -27,18 +27,7 @@ public class MuseoController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     
 
-  /*  @RequestMapping(value="/addMuseo", method = RequestMethod.GET)
-    public String addPersona(Model model) {
-    	logger.debug("addPersona");
-    	model.addAttribute("persona", new Opera());
-        return "personaForm.html";
-    }
-
-    @RequestMapping(value = "/persona/{id}", method = RequestMethod.GET)
-    public String getPersona(@PathVariable("id") Long id, Model model) {
-    	model.addAttribute("persona", this.personaService.personaPerId(id));
-    	return "persona.html";
-    }*/
+  
 
    
     

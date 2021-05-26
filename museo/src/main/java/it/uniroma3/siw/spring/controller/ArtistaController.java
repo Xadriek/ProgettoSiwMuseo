@@ -27,7 +27,7 @@ public class ArtistaController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     
 
-    @RequestMapping(value="/addArtista", method = RequestMethod.GET)
+    @RequestMapping(value="/admin/addArtista", method = RequestMethod.GET)
     public String addArtista(Model model) {
     	logger.debug("addArtista");
     	model.addAttribute("artista", new Artista());
@@ -46,13 +46,13 @@ public class ArtistaController {
     		return "artisti.html";
     }
     
-    @RequestMapping(value = "/persona", method = RequestMethod.POST)
-    public String newPersona(@ModelAttribute("persona") Artista artista, 
+    @RequestMapping(value = "/admin/artista", method = RequestMethod.POST)
+    public String newPersona(@ModelAttribute("artista") Artista artista, 
     									Model model, BindingResult bindingResult) {
     	this.artistaValidator.validate(artista, bindingResult);
         if (!bindingResult.hasErrors()) {
         	this.artistaService.inserisci(artista);
-            model.addAttribute("persone", this.artistaService.tutti());
+            model.addAttribute("artisti", this.artistaService.tutti());
             return "artisti.html";
         }
         return "artistaForm.html";

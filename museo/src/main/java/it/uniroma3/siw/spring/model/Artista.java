@@ -1,6 +1,6 @@
 package it.uniroma3.siw.spring.model;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.Map;
 
 import javax.persistence.CascadeType;
@@ -27,9 +27,9 @@ public @Data class Artista {
 	private String cognome;
 	
 	@Column(nullable=false)
-	private LocalDate dataDiNascita;
+	private Date dataDiNascita;
 	
-	private LocalDate dataDiMorte;
+	private Date dataDiMorte;
 	
 
 	@Column(nullable=false)

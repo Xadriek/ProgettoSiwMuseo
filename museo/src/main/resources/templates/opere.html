@@ -4,12 +4,12 @@
 <body>
 	<header th:replace="fragments/base.html :: intestazione"></header>
 	<div>
-    	<h4 th:text="#{header.persone}">List of persons</h4>
+    	<h4 th:text="#{header.opere}">List of persons</h4>
 		<ul>
-			<li th:each="persona : ${persone}">
-				<a href="persona.html" 
-				   th:href="@{'/persona' + '/' + ${persona.id}}" 
-				   th:text="|${persona.nome} ${persona.cognome}|">Paolo Rossi</a>
+			<li th:each="opera : ${opere}">
+				<a href="opera.html" 
+				   th:href="@{'/opera' + '/' + ${opera.id}}" 
+				   th:text="|${opera.titolo} ${opera.anno}|">Paolo Rossi</a>
 			</li>
 		</ul>
 	</div>

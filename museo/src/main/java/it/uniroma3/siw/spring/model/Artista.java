@@ -38,7 +38,7 @@ public @Data class Artista {
 	private String luogoMorte;
 	
 	@Column(nullable=false)
-	private String nazionalità;
+	private String nazionalita;
 	
 	@Column(nullable=false)
 	private String email;

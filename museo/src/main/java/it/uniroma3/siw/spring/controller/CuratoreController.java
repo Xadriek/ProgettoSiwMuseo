@@ -27,10 +27,10 @@ public class CuratoreController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     
 
-    @RequestMapping(value="/admin/addCuratore", method = RequestMethod.GET)
+    @RequestMapping(value="/admin/curatore", method = RequestMethod.GET)
     public String addCuratore(Model model) {
     	logger.debug("addCuratore");
-    	model.addAttribute("persona", new Curatore());
+    	model.addAttribute("curatore", new Curatore());
         return "curatoreForm.html";
     }
 

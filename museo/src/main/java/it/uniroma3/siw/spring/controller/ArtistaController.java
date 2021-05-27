@@ -27,7 +27,7 @@ public class ArtistaController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     
 
-    @RequestMapping(value="/admin/addArtista", method = RequestMethod.GET)
+    @RequestMapping(value="/admin/artista", method = RequestMethod.GET)
     public String addArtista(Model model) {
     	logger.debug("addArtista");
     	model.addAttribute("artista", new Artista());

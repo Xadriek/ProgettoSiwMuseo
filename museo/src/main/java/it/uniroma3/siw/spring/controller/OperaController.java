@@ -27,7 +27,7 @@ public class OperaController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     
 
-    @RequestMapping(value="/admin/addOpera", method = RequestMethod.GET)
+    @RequestMapping(value="/admin/opera", method = RequestMethod.GET)
     public String addOpera(Model model) {
     	logger.debug("addOpera");
     	model.addAttribute("opera", new Opera());

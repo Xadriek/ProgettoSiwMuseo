@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: headerfiles(title=#{header.persone})"> </head>
+<head th:replace="fragments/base.html :: headerfiles(title='SIW')"> </head>
 <body>
 	<header th:replace="fragments/base.html :: intestazione"></header>
 	<div>
@@ -8,7 +8,7 @@
 		<ul>
 			<li th:each="collezione : ${collezioni}">
 				<a href="collezione.html" 
-				   th:href="@{'/admin/collezione' + '/' + ${collezione.id}}" 
+				   th:href="@{'/collezione' + '/' + ${collezione.id}}" 
 				   th:text="|${collezione.nome} ${collezione.descrizione}|">nome e descrizione collezione</a>
 			</li>
 		</ul>

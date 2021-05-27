@@ -18,22 +18,26 @@
 			<a href="curatore" th:href="@{/curatore}">Elenco curatori</a>
    		</div>
    		<div>
-			<form th:action="@{/admin/collezione}" method="POST">
+			<form th:action="@{/admin/collezione}">
 			<button type="submit">Inserisci dati collezione</button>
    		</form>
    		</div>
    		<div>
-   		<form th:action="@{/admin/artista}"  method="POST">
+   		<form th:action="@{/admin/artista}">
 			<button type="submit">Inserisci dati artista</button>
    		</form>
    		</div>
    		<div>
-			<form th:action="@{/admin/opera}" method="POST">
+			<form th:action="@{/admin/opera}">
 			<button type="submit">Inserisci dati opera</button>
    		</form>
    		</div>
    		<div>
-			<a th:href="@{/admin/curatore}">Inserisci dati curatore</a>
+			<div>
+			<form th:action="@{/admin/curatore}">
+			<button type="submit">Inserisci dati curatore</button>
+   		</form>
+   		</div>
    		</div>
    		<div>
 			<a th:href="@{/logout}">Logout</a>

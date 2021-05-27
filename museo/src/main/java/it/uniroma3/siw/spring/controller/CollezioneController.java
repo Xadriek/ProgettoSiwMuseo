@@ -27,7 +27,7 @@ public class CollezioneController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     
 
-    @RequestMapping(value="/admin/addCollezione", method = RequestMethod.GET)
+    @RequestMapping(value="/admin/collezione", method = RequestMethod.GET)
     public String addCollezione(Model model) {
     	logger.debug("addCollezione");
     	model.addAttribute("collezione", new Collezione());

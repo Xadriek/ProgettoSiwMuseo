@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: headerfiles(title=#{title.formPersona})"> </head>
+<head th:replace="fragments/base.html :: headerfiles(title=#{title='SIW'})"> </head>
 <body>
 	<header th:replace="fragments/base.html :: intestazione"></header>
 	<div>
 		<h4>Inserisci i dati di una persona</h4>
 	</div>
-	<form th:action="@{/persona}" method="POST" th:object="${persona}">
+	<form th:action="@{opera}" method="POST" th:object="${opera}">
 		<div th:if="${#fields.hasGlobalErrors()}">
   			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 		</div>		
 		<div>
 			<div>
-				<span>Nome:</span>
-				<span><input type="text" th:field="*{nome}" /></span>
-				<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+				<span>Titolo:</span>
+				<span><input type="text" th:field="*{titolo}" /></span>
+				<span th:if="${#fields.hasErrors('nome')}" th:errors="*{titolo}"></span>
 			</div>		
 			<div>
-				<span>Cognome:</span>
-				<span><input type="text" th:field="*{cognome}" /></span>
-				<span th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></span>
+				<span>Anno:</span>
+				<span><input type="text" th:field="*{anno}" /></span>
+				<span th:if="${#fields.hasErrors('anno')}" th:errors="*{anno}"></span>
 			</div>
 			<div>
 				<span><button type="submit">Invio</button></span>

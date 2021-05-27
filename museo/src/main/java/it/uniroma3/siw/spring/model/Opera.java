@@ -7,12 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-public @Data class Opera {
+public class Opera {
 	 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

@@ -26,11 +26,8 @@ public class CuratoreValidator implements Validator {
 	public void validate(Object o, Errors errors) {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nome", "required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cognome", "required");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "dataDiNascita", "required");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "luogoNascita", "required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "matricola", "required");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "required");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "telefono", "required");
+
 
 		if (!errors.hasErrors()) {
 			logger.debug("confermato: valori non nulli");

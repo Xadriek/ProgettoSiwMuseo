@@ -6,7 +6,7 @@
 	<div>
 		<h4>Inserisci i dati di un artista</h4>
 	</div>
-	<form th:action="@{/artista}" method="POST" th:object="${artista}">
+	<form th:action="@{/admin/artista}" method="POST" th:object="${artista}">
 		<div th:if="${#fields.hasGlobalErrors()}">
   			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 		</div>		
@@ -48,12 +48,12 @@
 			</div>
 			<div>
 				<span>Email:</span>
-				<span><input type="email" th:field="*{email}" /></span>
+				<span><input type="text" th:field="*{email}" /></span>
 				<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
 			</div>
 			<div>
 				<span>Telefono:</span>
-				<span><input type="tel" th:field="*{telefono}" /></span>
+				<span><input type="text" th:field="*{telefono}" /></span>
 				<span th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></span>
 			</div>
 			<div>

@@ -1,6 +1,5 @@
-@charset "ISO-8859-1";
 header {
-    background: no-repeat left/cover url(/images/sea.jpeg);
+    background: no-repeat left/cover url(C:\Users\Xadri\Documents\GitHub\ProgettoSiwMuseo\museo\src\main\resources\static\images);
     display: flex;
     height: 120px;
     min-width: 120px;
@@ -14,8 +13,6 @@ header > h1 {
         fantasy;
     margin: 2%;
 }
-
-
 footer {
     border-top-style: outset;
     margin-top: 2em;

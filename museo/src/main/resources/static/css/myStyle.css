@@ -1,6 +1,6 @@
 @charset "ISO-8859-1";
 body{
-    background-color: rgb(161, 128, 90);
+    background-color: rgb(233, 209, 181);
     padding: 5px;
     
 }
@@ -34,24 +34,37 @@ span.input {width: 30%;}
 .centro{
     display: flex;
     flex-direction: column;
-    border: 1px solid hsl(0, 0%, 0%);
-    background-color: tan; 
+    
+    background-color: rgb(235, 204, 164); 
     padding: 5px; 
 }
 .item{
     text-align: center;
+
     padding: 10px;
 
 }
 .containerFlex{
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
-    border: 1px solid hsl(0, 0%, 0%);
+    
+    justify-content: center;
+    flex-wrap: wrap;
+    
+    
     
 }
 .item2{
-    border: 2px solid rgb(0, 0, 0);
-    text-align: center;
-    padding: 10px;
+    width: 406px;
+    padding: 1px;
+    
+
+}
+.elenchi{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.campi{
+    padding: 2px;
 }

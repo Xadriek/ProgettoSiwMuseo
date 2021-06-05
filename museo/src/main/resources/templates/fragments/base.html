@@ -20,7 +20,9 @@
 	<div class="another">This is another sidebar</div>
 	
 	<footer th:fragment="fondo">
-		<a th:href="@{/}">HOME</a>
+			<form th:action="@{/}">
+			<button type="submit">HOME</button>
+   		</form>
 		
 	</footer>
 </body>

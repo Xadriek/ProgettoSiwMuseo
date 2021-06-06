@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.persona})"> </head>
+	<head th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.login})"> </head>
 <body>
 	<header th:replace="fragments/base.html :: intestazione"></header>
-    questa è la homepage dalla quale si puo accedere alla pagina di loginform oppure registerForm oppure alla pagina di informazioni del museo
-    
-    <div>
-			<a th:href="@{/login}">login utente</a>
-   		</div>
-   		<div>
-			<a th:href="@{/contatti}">informazioni museo</a>
-   		</div>
+    <div class="centro">
+		<div class="item">
+		<h2>I veri musei sono quei posti dove il Tempo si trasforma in Spazio.</h2>
+		<h3>(Orhan Pamuk)</h3>
+	</div>
+	<div class="item">
+	 <form th:action="@{/login}">
+		<button type="Accedi">Accedi o Registrati</button>
+   	</form>
+</div>
+<div class="item">
+	   <form th:action="@{/contatti}">
+		<button type="About">Chi siamo</button>
+   	</form>
+</div>
+</div>
+<div class="containerFlex">
+	<div class="item2"><img src="/images/pergamena2.jpg" alt=""></div>
+	<div class="item2"><img src="/images/pergamena2.jpg" alt=""></div>
+	<div class="item2"><img src="/images/pergamena2.jpg" alt=""></div>
+	<div class="item2"><img src="/images/pergamena2.jpg" alt=""></div>
+</div>
+	
+
     <footer th:replace="fragments/base.html :: fondo"></footer>
 </body>
 </html>

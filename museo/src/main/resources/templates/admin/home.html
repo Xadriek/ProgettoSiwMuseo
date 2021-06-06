@@ -3,44 +3,56 @@
 	<head th:replace="fragments/base.html :: headerfiles(title='SIW')"> </head>
 <body>
 	<header th:replace="fragments/base.html :: intestazione"></header>
-    <div>
+    <div class="elenchi">
     	<h4 th:text="#{header.menuAdmin}">Menu</h4>
 		<div>
-			<a href="collezione" th:href="@{/collezione}">Elenco collezioni</a>
+			<form th:action="@{/collezione}">
+			<button type="submit">Elenco Collezioni</button>
+   		</form>
+		
    		</div>
-   		<div>
-			<a href="artista" th:href="@{/artista}">Elenco artisti</a>
+   		<div class="campi">
+			<form th:action="@{/artista}">
+			<button type="submit">Elenco Artisti</button>
+   		</form>
    		</div>
-   		<div>
-			<a href="opera" th:href="@{/opera}">Elenco opere</a>
+   		<div class="campi">
+			   	<form th:action="@{/opera}">
+			<button type="submit">Elenco Opere</button>
+   		</form>
    		</div>
-   		<div>
-			<a href="curatore" th:href="@{/curatore}">Elenco curatori</a>
+   		<div class="campi">
+			   	<form th:action="@{/curatore}">
+			<button type="submit">Elenco Curatori</button>
+   		</form>
    		</div>
-   		<div>
+   		<div class="campi">
 			<form th:action="@{/admin/collezione}">
 			<button type="submit">Inserisci dati collezione</button>
    		</form>
    		</div>
-   		<div>
+   		<div class="campi">
    		<form th:action="@{/admin/artista}">
 			<button type="submit">Inserisci dati artista</button>
    		</form>
    		</div>
-   		<div>
+   		<div class="campi">
 			<form th:action="@{/admin/opera}">
 			<button type="submit">Inserisci dati opera</button>
    		</form>
    		</div>
-   		<div>
+   		<div class="campi">
 			<div>
 			<form th:action="@{/admin/curatore}">
 			<button type="submit">Inserisci dati curatore</button>
    		</form>
    		</div>
    		</div>
-   		<div>
-			<a th:href="@{/logout}">Logout</a>
+   		<div class="campi">
+			   	<form th:action="@{/Logout}">
+			<button type="submit">Logout</button>
+   		</form>
+
    		</div>
     </div>
     <footer th:replace="fragments/base.html :: fondo(home='/default')"></footer>

@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.sql.DataSource;
 
@@ -31,7 +32,7 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
 
     /**
      * The datasource is automatically injected into the AuthConfiguration (using its getters and setters)
-     * and it is used to access the DB to get the Credentials to perform authentiation and authorization
+     * and it is used to access the DB to get the Credentials to perform authentication and authorization
      */
     @Autowired
     DataSource datasource;
@@ -68,6 +69,7 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                 // il logout è attivato con una richiesta GET a "/logout"
                 .logoutUrl("/logout")
                 // in caso di successo, si viene reindirizzati alla /index page
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/index")        
                 .invalidateHttpSession(true)
                 .clearAuthentication(true).permitAll();

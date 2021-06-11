@@ -23,12 +23,12 @@
 			</div>
 			<div>
 				<span>Data di nascita:</span>
-				<span><input type="date" th:field="*{dataDiNascita}" /></span>
+				<span><input type="text" th:field="*{dataDiNascita}" /></span>
 				<span th:if="${#fields.hasErrors('dataDiNascita')}" th:errors="*{dataDiNascita}"></span>
 			</div>
 			<div>
 				<span>Data di morte:</span>
-				<span><input type="date" th:field="*{dataDiMorte}" /></span>
+				<span><input type="text" th:field="*{dataDiMorte}" /></span>
 				<span th:if="${#fields.hasErrors('dataDiMorte')}" th:errors="*{dataDiMorte}"></span>
 			</div>
 			<div>

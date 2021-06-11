@@ -28,13 +28,13 @@ public @Data class Artista {
 	
 	@Column(nullable=false)
 	private Date dataDiNascita;
-	
+	@Column(nullable=true)
 	private Date dataDiMorte;
 	
 
 	@Column(nullable=false)
 	private String luogoNascita;
-	
+	@Column(nullable=true)
 	private String luogoMorte;
 	
 	@Column(nullable=false)

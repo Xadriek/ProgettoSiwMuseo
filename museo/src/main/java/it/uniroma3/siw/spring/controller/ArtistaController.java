@@ -1,5 +1,4 @@
 package it.uniroma3.siw.spring.controller;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +46,11 @@ public class ArtistaController {
     }
     
     @RequestMapping(value = "/admin/artista", method = RequestMethod.POST)
-    public String newPersona(@ModelAttribute("artista") Artista artista, 
+    
+    
+    // ma perche persona??? è artista no? me sa te sei sbagliato
+    
+    public String newArtista(@ModelAttribute("artista") Artista artista, 
     									Model model, BindingResult bindingResult) {
     	this.artistaValidator.validate(artista, bindingResult);
         if (!bindingResult.hasErrors()) {

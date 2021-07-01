@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.collezione})"> </head>
-<body>
-	<header th:replace="fragments/base.html :: intestazione"></header>
+	<head th:replace="fragments/baseadmin.html :: headerfiles(title=#{pageTitle.collezione})"> </head>
+
+<body id="top">
+	<header th:replace="fragments/baseadmin.html :: intestazione"></header>
+
     <div>
-    	<h4 th:text="#{header.collezione}">...</h4>
+    	<h6 class="heading" th:text="#{header.collezione}">Collezione</h6>
     	
     	<div th:if="${collezione}" th:object="${collezione}">
 			<span th:text="*{nome}">qui-va-nome</span>
@@ -12,6 +14,9 @@
    		</div>
     	<div th:unless="${collezione}">Non esiste</div>
     </div>
-    <footer th:replace="fragments/base.html :: fondo"></footer>
+    
+    
+    
+    <footer th:replace="fragments/baseadmin.html :: fondo"></footer>
 </body>
 </html>

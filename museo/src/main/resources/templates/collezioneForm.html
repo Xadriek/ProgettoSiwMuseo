@@ -1,31 +1,76 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: headerfiles(title=#{title.formCollezione})"></head>
-<body>
-	<header th:replace="fragments/base.html :: intestazione"></header>
-	<div>
-		<h4>Inserisci i dati di una collezione</h4>
-	</div>
+	<head th:replace="fragments/baseadmin.html :: headerfiles(title='Progetto Museale')"> </head>
+
+<body id="top">
+	<header th:replace="fragments/baseadmin.html :: intestazione"></header>
+	
+<div class="wrapper row3">
+ <main class="hoc container clear"> 
+    <!-- main body -->
+    <!-- ############################################################################################# -->
+    <section class="group">
+      
+      <div class="one_half first">
+      <div class="containerLogin">
+		<div>
+			<h6 class="heading" th:text="#{header.collezione}">Dati Collezione</h6>
+		</div>
+		
+
 	<form th:action="@{/admin/collezione}" method="POST" th:object="${collezione}">
 		<div th:if="${#fields.hasGlobalErrors()}">
-  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+  		<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 		</div>		
 		<div>
 			<div>
-				<span>Nome:</span>
-				<span><input type="text" th:field="*{nome}" /></span>
-				<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+				<h6 class="heading"><span>Nome:</span></h6>
+				<h6 class="heading"><span><input type="text" th:field="*{nome}" /></span></h6>
+				<h6 class="heading"><span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span></h6>
 			</div>		
 			<div>
-				<span>Descrizione:</span>
-				<span><input type="text" th:field="*{descrizione}" /></span>
-				<span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
+				<h6 class="heading"><span>Descrizione:</span></h6>
+				<h6 class="heading"><span><input type="text" th:field="*{descrizione}" /></span></h6>
+				<h6 class="heading"><span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span></h6>
 			</div>
 			<div>
-				<span><button type="submit">Invio</button></span>
+				<h6 class="heading"><span><button type="submit">Invio</button></span></h6>
 			</div>
 		</div>
 	</form>
-	<footer th:replace="fragments/base.html :: fondo"></footer>
+	</div>
+	  <div>
+	  </div>
+      </div>
+      <div class="one_half ">
+           <div class="containerLogin">
+		<div>
+			<h6 class="heading" th:text="#{header.collezione}">Dati Collezione</h6>
+		</div>
+      	<select name="collezione" size="10" multiple="multiple">
+    	<option value="1"> collezione1 </option>
+    	<option value="2"> collezione2 </option>
+    	<option value="3"> collezione3 </option>
+    	<option value="4"> collezione4 </option>
+    	<option value="5"> collezione5 </option>
+    	<option value="6"> collezione6 </option>
+    	<option value="7"> collezione7 </option>
+    	<option value="8"> collezione8 </option>
+    	<option value="9"> collezione9 </option>
+    	<option value="10"> collezione10 </option>
+    	<option value="11"> collezione11 </option>
+    	<option value="12"> collezione12 </option>
+		</select>
+      </div>
+      
+      </div>
+
+    </section>
+    <!-- ############################################################################################# -->
+    <!-- / main body -->
+    <div class="clear"></div>
+  </main>
+</div>
+	<footer th:replace="fragments/baseadmin.html :: fondo"></footer>
 </body>
 </html>

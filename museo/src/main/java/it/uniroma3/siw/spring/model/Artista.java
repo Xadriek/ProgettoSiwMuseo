@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import lombok.Data;
 
@@ -48,6 +49,16 @@ public @Data class Artista {
 	
 	@OneToMany(mappedBy="artista",cascade= CascadeType.ALL)
 	private Map<Long,Opera> opere;
+	
+	@Column(nullable = true, length = 64)
+    private String photos;
+	
+	@Transient
+    public String getPhotosImagePath() {
+        if (photos == null || id == null) return null;
+         
+        return "/artista-photos/" + id + "/" + photos;
+    }
 	
 
 

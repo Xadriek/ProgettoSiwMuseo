@@ -29,5 +29,7 @@ public @Data class User {
 	
 	@Column(nullable=false)
 	private String password;
+	
+	
 
 }

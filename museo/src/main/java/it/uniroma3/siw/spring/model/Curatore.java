@@ -1,6 +1,5 @@
 package it.uniroma3.siw.spring.model;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.Map;
 
@@ -11,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import lombok.Data;
 
@@ -43,6 +43,15 @@ public @Data class Curatore {
 	private Long matricola;
 	@OneToMany(mappedBy="curatore",cascade= {CascadeType.ALL})
 	private Map<Long,Collezione> collezioni;
+	
+	@Column(nullable = true, length = 64)
+    private String photos;
+	@Transient
+    public String getPhotosImagePath() {
+        if (photos == null || id == null) return null;
+         
+        return "/curatore-photos/" + id + "/" + photos;
+    }
 	
 
 }

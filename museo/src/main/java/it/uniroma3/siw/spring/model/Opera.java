@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 import lombok.Data;
 
@@ -31,6 +32,16 @@ public @Data class Opera {
 	
 	@ManyToOne
 	private Artista artista;
+	
+	@Column(nullable = true, length = 64)
+    private String photos;
+	
+	@Transient
+    public String getPhotosImagePath() {
+        if (photos == null || id == null) return null;
+         
+        return "/opera-photos/" + id + "/" + photos;
+    }
 
 	
 }

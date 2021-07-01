@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: headerfiles(title=#{title='SIW'})"> </head>
+<head
+	th:replace="fragments/base.html :: headerfiles(title=#{title='SIW'})">
+</head>
 <body>
 	<header th:replace="fragments/base.html :: intestazione"></header>
 	<div>
@@ -8,19 +10,29 @@
 	</div>
 	<form th:action="@{opera}" method="POST" th:object="${opera}">
 		<div th:if="${#fields.hasGlobalErrors()}">
-  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
-		</div>		
+			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+		</div>
 		<div>
 			<div>
-				<span>Titolo:</span>
-				<span><input type="text" th:field="*{titolo}" /></span>
-				<span th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}"></span>
-			</div>		
-			<div>
-				<span>Anno:</span>
-				<span><input type="text" th:field="*{anno}" /></span>
-				<span th:if="${#fields.hasErrors('anno')}" th:errors="*{anno}"></span>
+				<span>Titolo:</span> <span><input type="text"
+					th:field="*{titolo}" /></span> <span
+					th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}"></span>
 			</div>
+			<div>
+				<span>Anno:</span> <span><input type="text"
+					th:field="*{anno}" /></span> <span th:if="${#fields.hasErrors('anno')}"
+					th:errors="*{anno}"></span>
+			</div>
+			<form th:action="@{/admin/opera/save}" th:object="${opera}" method="post"
+				enctype="multipart/form-data">
+				...
+				<div>
+
+					<label>Photos: </label> <input type="file" name="image"
+						accept="image/png, image/jpeg" />
+
+				</div>
+			</form>
 			<div>
 				<span><button type="submit">Invio</button></span>
 			</div>

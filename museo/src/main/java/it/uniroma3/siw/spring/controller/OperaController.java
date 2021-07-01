@@ -1,19 +1,27 @@
 package it.uniroma3.siw.spring.controller;
 
+import java.io.IOException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.view.RedirectView;
 
 import it.uniroma3.siw.spring.controller.validator.OperaValidator;
 import it.uniroma3.siw.spring.model.Opera;
 import it.uniroma3.siw.spring.service.OperaService;
+import it.uniroma3.siw.upload.FileUploadUtil;
 
 @Controller
 public class OperaController {
@@ -33,6 +41,7 @@ public class OperaController {
     	model.addAttribute("opera", new Opera());
         return "operaForm.html";
     }
+    
 
     @RequestMapping(value = "/opera/{id}", method = RequestMethod.GET)
     public String getOpera(@PathVariable("id") Long id, Model model) {
@@ -57,4 +66,18 @@ public class OperaController {
         }
         return "operaForm.html";
     }
+    @PostMapping("/admin/opera/save")
+    public RedirectView saveOpera(Opera opera,
+    		@RequestParam("image") MultipartFile multipartFile) throws IOException {
+    	
+    	String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+    	opera.setPhotos(fileName);
+    	
+    	Opera savedOpera =this.operaService.inserisci(opera);
+    	
+    	String uploadDir = "opera-photos/" + savedOpera.getId();
+    	
+    	FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+    	
+    	return new RedirectView("/opere", true);}
 }

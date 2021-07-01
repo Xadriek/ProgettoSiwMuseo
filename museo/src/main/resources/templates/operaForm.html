@@ -8,7 +8,7 @@
 	<div>
 		<h4>Inserisci i dati di una persona</h4>
 	</div>
-	<form th:action="@{opera}" method="POST" th:object="${opera}">
+	<form th:action="@{opera}" method="POST" th:object="${opera}" enctype="multipart/form-data">
 		<div th:if="${#fields.hasGlobalErrors()}">
 			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 		</div>
@@ -23,16 +23,14 @@
 					th:field="*{anno}" /></span> <span th:if="${#fields.hasErrors('anno')}"
 					th:errors="*{anno}"></span>
 			</div>
-			<form th:action="@{/admin/opera/save}" th:object="${opera}" method="post"
-				enctype="multipart/form-data">
-				...
+			
 				<div>
 
 					<label>Photos: </label> <input type="file" name="image"
 						accept="image/png, image/jpeg" />
 
 				</div>
-			</form>
+			
 			<div>
 				<span><button type="submit">Invio</button></span>
 			</div>

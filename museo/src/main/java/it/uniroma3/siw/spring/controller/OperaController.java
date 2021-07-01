@@ -55,7 +55,7 @@ public class OperaController {
     		return "opere.html";
     }
     
-    @RequestMapping(value = "/admin/opera", method = RequestMethod.POST)
+   /* @RequestMapping(value = "/admin/opera", method = RequestMethod.POST)
     public String newOpera(@ModelAttribute("opera") Opera opera, 
     									Model model, BindingResult bindingResult) {
     	this.operaValidator.validate(opera, bindingResult);
@@ -65,19 +65,23 @@ public class OperaController {
             return "opere.html";
         }
         return "operaForm.html";
-    }
-    @PostMapping("/admin/opera/save")
-    public RedirectView saveOpera(Opera opera,
-    		@RequestParam("image") MultipartFile multipartFile) throws IOException {
+    }*/
+    @PostMapping("/admin/opera")
+    public RedirectView newOpera(@ModelAttribute("opera") Opera opera,
+    		@RequestParam("image") MultipartFile multipartFile,Model model, BindingResult bindingResult) throws IOException {
     	
+    this.operaValidator.validate(opera, bindingResult);
+      if (!bindingResult.hasErrors()) {
     	String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
     	opera.setPhotos(fileName);
     	
     	Opera savedOpera =this.operaService.inserisci(opera);
     	
-    	String uploadDir = "opera-photos/" + savedOpera.getId();
+    	String uploadDir = "src/main/resources/static/opera-photos/" + savedOpera.getId();
     	
     	FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
     	
-    	return new RedirectView("/opere", true);}
-}
+    	return new RedirectView("opere.html", true);
+    	}
+      return new RedirectView("operaForm.html", false);
+}}

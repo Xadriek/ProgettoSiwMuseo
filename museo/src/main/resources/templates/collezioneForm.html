@@ -10,34 +10,54 @@
     <!-- main body -->
     <!-- ############################################################################################# -->
     <section class="group">
-      
+  <form th:action="@{/admin/collezione}" method="POST" th:object="${collezione}">
+		<div th:if="${#fields.hasGlobalErrors()}">
+  		<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+		</div>	
+		    
       <div class="one_half first">
       <div class="containerLogin">
 		<div>
 			<h6 class="heading" th:text="#{header.collezione}">Dati Collezione</h6>
 		</div>
-		
-
-	<form th:action="@{/admin/collezione}" method="POST" th:object="${collezione}">
-		<div th:if="${#fields.hasGlobalErrors()}">
-  		<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
-		</div>		
-		<div>
-			<div>
-				<h6 class="heading"><span>Nome:</span></h6>
-				<h6 class="heading"><span><input type="text" th:field="*{nome}" /></span></h6>
-				<h6 class="heading"><span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span></h6>
-			</div>		
-			<div>
-				<h6 class="heading"><span>Descrizione:</span></h6>
-				<h6 class="heading"><span><input type="text" th:field="*{descrizione}" /></span></h6>
-				<h6 class="heading"><span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span></h6>
-			</div>
+	<table>
+    	<tr>
+        <td>
+        	<h6 class="heading"><span>Nome:<input type="text" th:field="*{nome}" /></span></h6>
+			<h6 class="heading"><span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span></h6>
+        </td>		
+		</tr>
+		<tr>
+		<td> 
+			<h6 class="heading"><span>Descrizione:<input type="text" th:field="*{descrizione}" /></span></h6>
+			<h6 class="heading"><span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span></h6>
+		</td>
+		</tr>
+		<tr>
+		<td>
+			<h6 class="heading"><span>	
+			<select name="Curatore"  >
+    		<option value="1"> Curatore1 </option>
+    		<option value="2"> Curatore2 </option>
+    		<option value="3"> Curatore3 </option>
+    		<option value="4"> Curatore4 </option>
+    		<option value="5"> Curatore5 </option>
+    		<option value="6"> Curatore6 </option>
+    		<option value="7"> Curatore7 </option>
+    		<option value="8"> Curatore8 </option>
+    		<option value="9"> Curatore9 </option>
+    		<option value="10"> Curatore10 </option>
+    		<option value="11"> Curatore11 </option>
+    		<option value="12"> Curatore12 </option>
+			</select>
+		</span></h6>
+		</td>
+		</tr>
+		</table>
 			<div>
 				<h6 class="heading"><span><button type="submit">Invio</button></span></h6>
 			</div>
-		</div>
-	</form>
+		
 	</div>
 	  <div>
 	  </div>
@@ -45,26 +65,29 @@
       <div class="one_half ">
            <div class="containerLogin">
 		<div>
-			<h6 class="heading" th:text="#{header.collezione}">Dati Collezione</h6>
+			<h6 class="heading" th:text="#{header.opere}">Seleziona Opere</h6>
+						<h6 class="heading"><span>	
+			<select name="Opere"  size="10" multiple="multiple">
+    		<option value="1"> OperaName1 </option>
+    		<option value="2"> OperaName2 </option>
+    		<option value="3"> OperaName3 </option>
+    		<option value="4"> OperaName4 </option>
+    		<option value="5"> OperaName5 </option>
+    		<option value="6"> OperaName6 </option>
+    		<option value="7"> OperaName7 </option>
+    		<option value="8"> OperaName8 </option>
+    		<option value="9"> OperaName9 </option>
+    		<option value="10"> OperaName10 </option>
+    		<option value="11"> OperaName11 </option>
+    		<option value="12"> OperaName12 </option>
+			</select>
+		</span></h6>
 		</div>
-      	<select name="collezione" size="10" multiple="multiple">
-    	<option value="1"> collezione1 </option>
-    	<option value="2"> collezione2 </option>
-    	<option value="3"> collezione3 </option>
-    	<option value="4"> collezione4 </option>
-    	<option value="5"> collezione5 </option>
-    	<option value="6"> collezione6 </option>
-    	<option value="7"> collezione7 </option>
-    	<option value="8"> collezione8 </option>
-    	<option value="9"> collezione9 </option>
-    	<option value="10"> collezione10 </option>
-    	<option value="11"> collezione11 </option>
-    	<option value="12"> collezione12 </option>
-		</select>
+
       </div>
       
       </div>
-
+	</form>
     </section>
     <!-- ############################################################################################# -->
     <!-- / main body -->

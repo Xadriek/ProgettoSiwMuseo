@@ -81,7 +81,20 @@ public class OperaController {
     	
     	FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
     	
-    	return new RedirectView("opere.html", true);
+    	return new RedirectView("opere");
     	}
-      return new RedirectView("operaForm.html", false);
-}}
+      return new RedirectView("operaForm");
+}
+    @RequestMapping(value = "/admin/opere", method = RequestMethod.GET)
+    public String getOpere2(Model model) {
+    		model.addAttribute("opere", this.operaService.tutti());
+    		return "uploadSuccessful.html";
+    }
+    @RequestMapping(value="/admin/operaForm", method = RequestMethod.GET)
+    public String addOpera2(Model model) {
+    	logger.debug("addOpera");
+    	model.addAttribute("opera", new Opera());
+        return "operaForm.html";
+    }
+
+}

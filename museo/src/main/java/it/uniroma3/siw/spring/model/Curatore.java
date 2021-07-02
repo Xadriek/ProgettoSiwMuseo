@@ -36,7 +36,7 @@ public @Data class Curatore {
 	
 	@Column(nullable=false)
 	private String email;
-	@Column(nullable=false)
+	@Column(nullable=true)
 	private Long telefono;
 	
 	@Column(nullable=false)

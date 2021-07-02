@@ -33,7 +33,7 @@ public class CollezioneController {
     	logger.debug("addCollezione");
     	model.addAttribute("collezione", new Collezione());
     	model.addAttribute("curatori", this.collezioneService.getCuratoreService().tutti());
-    	model.addAttribute("opere", this.collezioneService.getOperaService().tutti());
+    	model.addAttribute("opere", this.collezioneService.getOperaService().opereSenzaCollezione());
         return "collezioneForm.html";
     }
 

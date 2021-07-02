@@ -1,5 +1,6 @@
 package it.uniroma3.siw.spring.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,5 +49,15 @@ public class OperaService {
 			return true;
 		else 
 			return false;
+	}
+	@Transactional
+	public List<Opera> opereSenzaCollezione(){
+		List<Opera> lista=(List<Opera>) operaRepository.findAll();
+		List<Opera> listaSenzaCollezione=new ArrayList<>();
+		for(Opera opera:lista) {
+			if(opera.getCollezione()==null)
+				listaSenzaCollezione.add(opera);
+		}
+		return listaSenzaCollezione;
 	}
 }

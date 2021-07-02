@@ -1,5 +1,6 @@
 package it.uniroma3.siw.spring.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,7 +28,7 @@ public @Data class Opera {
 	@Column(length=299)
 	private String descrizione;
 	
-	@ManyToOne
+	@ManyToOne(cascade =CascadeType.ALL)
 	private Collezione collezione;
 	
 	@ManyToOne

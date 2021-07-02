@@ -39,6 +39,22 @@
 				<label>Foto: </label> <input type="file" name="image" accept="image/png, image/jpeg" />
 				</span></h6>
         </td>
+        <td>				
+				<h6 class="heading"><span>
+				<label>Collezione: </label> <select id="collezione" th:field="*{collezione}">
+						<option th:each="collezione : ${collezioni}"
+										th:value="${collezione.id}" th:text="${collezione.nome}"></option>
+										</select>
+				</span></h6>
+        </td>
+        <td>				
+				<h6 class="heading"><span>
+				<label>Artista: </label> <select id="artista" th:field="*{artista}">
+						<option th:each="artista : ${artisti}"
+										th:value="${artista.id}" th:text="${artista.nome}"></option>
+										</select>
+				</span></h6>
+        </td>
         <td>
         <h6 class="heading"><span></span></h6>
         </td>

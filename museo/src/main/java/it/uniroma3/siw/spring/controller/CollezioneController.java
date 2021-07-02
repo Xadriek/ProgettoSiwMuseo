@@ -32,8 +32,9 @@ public class CollezioneController {
     public String addCollezione(Model model) {
     	logger.debug("addCollezione");
     	model.addAttribute("collezione", new Collezione());
-    	model.addAttribute("curatori", this.collezioneService.getCuratoreService().tutti());
-    	model.addAttribute("opere", this.collezioneService.getOperaService().opereSenzaCollezione());
+    	model.addAttribute("curatori",this.collezioneService.getCuratoreService().tutti());
+    	//model.addAttribute("curatori", this.collezioneService.getCuratoreService().tutti());
+    //	model.addAttribute("opere", this.collezioneService.getOperaService().opereSenzaCollezione());
         return "collezioneForm.html";
     }
 
@@ -58,6 +59,7 @@ public class CollezioneController {
             model.addAttribute("collezioni", this.collezioneService.tutti());
             return "collezioni.html";
         }
+        model.addAttribute("curatori",this.collezioneService.getCuratoreService().tutti());
         return "collezioneForm.html";
     }
 }

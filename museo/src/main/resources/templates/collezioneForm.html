@@ -34,7 +34,7 @@
 		</td>
 		</tr>
 		<tr>
-		<li th:each="curatore : ${curatori}">
+	<!--  	<li th:each="curatore : ${curatori}">
 				<a href="curatore.html" 
 				   th:href="@{'/curatore' + '/' + ${curatore.id}}" 
 				   th:text="|${curatore.nome} ${curatore.cognome}|">Paolo Rossi</a>
@@ -43,7 +43,7 @@
 		<li th:each="opera : ${opere}">
 				<a href="opera.html" 
 				   th:href="@{'/opera' + '/' + ${opera.id}}" 
-				   th:text="|${opera.titolo} ${opera.anno}|">Paolo Rossi</a>
+				   th:text="|${opera.titolo} ${opera.anno}|">Paolo Rossi</a> 
 			</li>
 			<h6 class="heading"><span>	
 			<select name="Curatore"  >
@@ -61,7 +61,7 @@
     		<option value="12"> Curatore12 </option>
 			</select>
 		</span></h6>
-		</td>
+		</td>-->
 		</tr>
 		</table>
 			<div>
@@ -75,23 +75,12 @@
       <div class="one_half ">
            <div class="containerLogin">
 		<div>
-			<h6 class="heading" th:text="#{header.opere}">Seleziona Opere</h6>
-						<h6 class="heading"><span>	
-			<select name="Opere"  size="10" multiple="multiple">
-    		<option value="1"> OperaName1 </option>
-    		<option value="2"> OperaName2 </option>
-    		<option value="3"> OperaName3 </option>
-    		<option value="4"> OperaName4 </option>
-    		<option value="5"> OperaName5 </option>
-    		<option value="6"> OperaName6 </option>
-    		<option value="7"> OperaName7 </option>
-    		<option value="8"> OperaName8 </option>
-    		<option value="9"> OperaName9 </option>
-    		<option value="10"> OperaName10 </option>
-    		<option value="11"> OperaName11 </option>
-    		<option value="12"> OperaName12 </option>
-			</select>
-		</span></h6>
+			<h6 class="heading"><span>
+				<label>Curatore: </label> <select id="curatore" th:field="*{curatore}">
+						<option th:each="curatore : ${curatori}"
+										th:value="${curatore.id}" th:text="${curatore.nome}"></option>
+										</select>
+				</span></h6>
 		</div>
 
       </div>

@@ -27,7 +27,7 @@ public @Data class Collezione {
 	@Column(length=299)
 	private String descrizione;
 	
-	@OneToMany(mappedBy="collezione",cascade= {CascadeType.MERGE})
+	@OneToMany(mappedBy="collezione",cascade= {CascadeType.ALL})
 	private Map<Long,Opera> opere;
 	
 	@ManyToOne

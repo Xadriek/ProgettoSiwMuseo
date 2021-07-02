@@ -39,6 +39,8 @@ public class OperaController {
     public String addOpera(Model model) {
     	logger.debug("addOpera");
     	model.addAttribute("opera", new Opera());
+    	model.addAttribute("collezioni",this.operaService.getCollezioneService().tutti());
+    	model.addAttribute("artisti",this.operaService.getArtistaService().tutti());
         return "operaForm.html";
     }
     
@@ -75,25 +77,27 @@ public class OperaController {
     	String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
     	opera.setPhotos(fileName);
     	
+    	
     	Opera savedOpera =this.operaService.inserisci(opera);
     	
     	String uploadDir = "opera-photos/" + savedOpera.getId();
     	
     	FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-    	
+    	model.addAttribute("opere", this.operaService.tutti());
     	return new RedirectView("opere");
     	}
       return new RedirectView("operaForm");
 }
     @RequestMapping(value = "/admin/opere", method = RequestMethod.GET)
     public String getOpere2(Model model) {
-    		model.addAttribute("opere", this.operaService.tutti());
+    		
     		return "uploadSuccessful.html";
     }
     @RequestMapping(value="/admin/operaForm", method = RequestMethod.GET)
     public String addOpera2(Model model) {
     	logger.debug("addOpera");
     	model.addAttribute("opera", new Opera());
+    	model.addAttribute("collezioni",this.operaService.getCollezioneService().tutti());
         return "operaForm.html";
     }
 

@@ -688,4 +688,10 @@ a:hover {
 	.font-x2{font-size:1.6rem;}
 	.font-x3{font-size:1.8rem;}
 }
-
+.boxFox {
+  background-color: #c0c0c0;
+  color: black;
+  border: 2px solid black;
+  margin: 20px;
+  padding: 20px;
+}

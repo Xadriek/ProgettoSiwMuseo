@@ -16,13 +16,13 @@
 	
 		<div>
     	<h6 class="heading" th:text="#{header.opere}">Lista di opere</h6>
-		<ul>
-			<li th:each="opera : ${opere}">
-				<a href="opera.html" 
-				   th:href="@{'/opera' + '/' + ${opera.id}}" 
-				   th:text="|${opera.titolo} ${opera.anno}|">Paolo Rossi</a>
-			</li>
-		</ul>
+		
+		<div class="boxFox" th:each="opera : ${opere}">
+			<img th:src="@{${opera.photosImagePath}}" width="120" height="168"/>
+			<a href="opera.html" 
+			 th:href="@{'/opera' + '/' + ${opera.id}}" 
+			th:text="|${opera.titolo} ${opera.anno}|">Paolo Rossi</a>
+		</div>
 	</div>
 	</div>
 	  <div>

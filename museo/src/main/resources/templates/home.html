@@ -1,27 +1,49 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments/base.html :: headerfiles(title='SIW')"> </head>
-<body>
-	<header th:replace="fragments/base.html :: intestazione"></header>
-    <div>
-    	<h4 th:text="#{header.menuUtente}">Menu</h4>
-		<div>
-			<a href="collezione" th:href="@{/collezione}">Elenco collezioni</a>
-   		</div>
-   		<div>
-			<a href="artista" th:href="@{/artista}">Elenco artisti</a>
-   		</div>
-   		<div>
-			<a href="opera" th:href="@{/opera}">Elenco opere</a>
-   		</div>
-   		<div>
-			<a href="curatore" th:href="@{/curatore}">Elenco curatori</a>
-   		</div>
-   		<div>
-			<a th:href="@{/logout}">Logout</a>
-   		</div>
-   		
-    </div>
+	<head th:replace="fragments/baseadmin.html :: headerfiles(title='Progetto Museale')"> </head>
+
+<body id="top">
+	<header th:replace="fragments/baseadmin.html :: intestazione"></header>
+ 
+ <!-- Gallery Photo ################################################################################### -->  
+
+ <section class="group">
+	<div class="bgded overlay" style="background-image:url('images/backgrounds/01.png');">
+  	<figure class="hoc container clear imgroup"> 
+    <!-- ################################################################################################ -->
+    <figcaption class="sectiontitle">
+      <p class="nospace font-xs">Benvenuto <a sec:authentication="name">Ruolo di </a><a sec:authentication="principal.authorities"></a></p>
+   
+   <h2>Welcome</h2>
+        <p>Spring Security Thymeleaf tutorial</p>
+        <div sec:authorize="hasRole('USER')">Text visible to user.</div>
+        <div sec:authorize="hasRole('ADMIN')">Text visible to admin.</div>
+        <div sec:authorize="isAuthenticated()">
+            Text visible only to authenticated users.
+        </div>
+        Authenticated username:
+        <div sec:authentication="name"></div>
+        Authenticated user roles:
+        <div sec:authentication="principal.authorities"></div>
+      
+   
+      
+    </figcaption>
+        
+    <ul class="nospace group">
+      <li class="one_third"><a class="imgover" href="#"><img src="images/pic1.png" alt=""></a></li>
+      <li class="one_third"><a class="imgover" href="#"><img src="images/pic2.png" alt=""></a></li>
+      <li class="one_third"><a class="imgover" href="#"><img src="images/pic3.png" alt=""></a></li>
+      <li class="one_third"><a class="imgover" href="#"><img src="images/pic4.png" alt=""></a></li>
+      <li class="one_third"><a class="imgover" href="#"><img src="images/pic5.png" alt=""></a></li>
+      <li class="one_third"><a class="imgover" href="#"><img src="images/pic6.png" alt=""></a></li>
+    </ul>
+    <!-- ################################################################################################ -->
+  </figure>
+  <!-- ############################################################################################### -->
+  	</div>
+  </section>
+ 
     <footer th:replace="fragments/base.html :: fondo(home='/default')"></footer>
 </body>
 </html>

@@ -1,60 +1,39 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments/base.html :: headerfiles(title='SIW')"> </head>
-<body>
-	<header th:replace="fragments/base.html :: intestazione"></header>
-    <div class="elenchi">
-    	<h4 th:text="#{header.menuAdmin}">Menu</h4>
-		<div>
-			<form th:action="@{/collezione}">
-			<button type="submit">Elenco Collezioni</button>
-   		</form>
-		
-   		</div>
-   		<div class="campi">
-			<form th:action="@{/artista}">
-			<button type="submit">Elenco Artisti</button>
-   		</form>
-   		</div>
-   		<div class="campi">
-			   	<form th:action="@{/opera}">
-			<button type="submit">Elenco Opere</button>
-   		</form>
-   		</div>
-   		<div class="campi">
-			   	<form th:action="@{/curatore}">
-			<button type="submit">Elenco Curatori</button>
-   		</form>
-   		</div>
-   		<div class="campi">
-			<form th:action="@{/admin/collezione}">
-			<button type="submit">Inserisci dati collezione</button>
-   		</form>
-   		</div>
-   		<div class="campi">
-   		<form th:action="@{/admin/artista}">
-			<button type="submit">Inserisci dati artista</button>
-   		</form>
-   		</div>
-   		<div class="campi">
-			<form th:action="@{/admin/opera}">
-			<button type="submit">Inserisci dati opera</button>
-   		</form>
-   		</div>
-   		<div class="campi">
-			<div>
-			<form th:action="@{/admin/curatore}">
-			<button type="submit">Inserisci dati curatore</button>
-   		</form>
-   		</div>
-   		</div>
-   		<div class="campi">
-			   	<form th:action="@{/Logout}">
-			<button type="submit">Logout</button>
-   		</form>
+	<head th:replace="fragments/baseadmin.html :: headerfiles(title='Progetto Museale')"> </head>
 
-   		</div>
-    </div>
+<body id="top">
+	<header th:replace="fragments/baseadmin.html :: intestazione"></header>
+ 
+ <!-- Gallery Photo ################################################################################### -->  
+
+ <section class="group">
+	<div class="bgded overlay" style="background-image:url('images/backgrounds/01.png');">
+  	<figure class="hoc container clear imgroup"> 
+    <!-- ################################################################################################ -->
+    <figcaption class="sectiontitle">
+      <p class="nospace font-xs">Benvenuto <a sec:authentication="name">Ruolo di </a><a sec:authentication="principal.authorities"></a></p>
+      
+ <h2>Welcome</h2>
+        
+      
+      
+    </figcaption>
+        
+    <ul class="nospace group">
+      <li class="one_third"><a class="imgover" href="#"><img src="images/pic1.png" alt=""></a></li>
+      <li class="one_third"><a class="imgover" href="#"><img src="images/pic2.png" alt=""></a></li>
+      <li class="one_third"><a class="imgover" href="#"><img src="images/pic3.png" alt=""></a></li>
+      <li class="one_third"><a class="imgover" href="#"><img src="images/pic4.png" alt=""></a></li>
+      <li class="one_third"><a class="imgover" href="#"><img src="images/pic5.png" alt=""></a></li>
+      <li class="one_third"><a class="imgover" href="#"><img src="images/pic6.png" alt=""></a></li>
+    </ul>
+    <!-- ################################################################################################ -->
+  </figure>
+  <!-- ############################################################################################### -->
+  	</div>
+  </section>
+ 
     <footer th:replace="fragments/base.html :: fondo(home='/default')"></footer>
 </body>
 </html>

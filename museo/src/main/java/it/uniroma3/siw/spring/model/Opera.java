@@ -1,11 +1,13 @@
 package it.uniroma3.siw.spring.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 import lombok.Data;
 
@@ -26,11 +28,21 @@ public @Data class Opera {
 	@Column(length=299)
 	private String descrizione;
 	
-	@ManyToOne
+	@ManyToOne(cascade =CascadeType.ALL)
 	private Collezione collezione;
 	
 	@ManyToOne
 	private Artista artista;
+	
+	@Column(nullable = true, length = 64)
+    private String photos;
+	
+	@Transient
+    public String getPhotosImagePath() {
+        if (this.getPhotos() == null || this.getId() == null) return null;
+         
+        return "/"+"opera-photos" + "/"+ id + "/" + photos;
+    }
 
 	
 }

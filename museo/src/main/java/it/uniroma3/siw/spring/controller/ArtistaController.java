@@ -1,19 +1,26 @@
 package it.uniroma3.siw.spring.controller;
+import java.io.IOException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.view.RedirectView;
 
 import it.uniroma3.siw.spring.controller.validator.ArtistaValidator;
 import it.uniroma3.siw.spring.model.Artista;
 import it.uniroma3.siw.spring.service.ArtistaService;
+import it.uniroma3.siw.upload.FileUploadUtil;
 
 @Controller
 public class ArtistaController {
@@ -46,8 +53,12 @@ public class ArtistaController {
     		return "artisti.html";
     }
     
-    @RequestMapping(value = "/admin/artista", method = RequestMethod.POST)
-    public String newPersona(@ModelAttribute("artista") Artista artista, 
+   /* @RequestMapping(value = "/admin/artista", method = RequestMethod.POST)
+    
+    
+    // ma perche persona??? � artista no? me sa te sei sbagliato
+    
+    public String newArtista(@ModelAttribute("artista") Artista artista, 
     									Model model, BindingResult bindingResult) {
     	this.artistaValidator.validate(artista, bindingResult);
         if (!bindingResult.hasErrors()) {
@@ -55,6 +66,36 @@ public class ArtistaController {
             model.addAttribute("artisti", this.artistaService.tutti());
             return "artisti.html";
         }
+        return "artistaForm.html";
+    }*/
+    @PostMapping("/admin/artista")
+    public RedirectView newArtista(@ModelAttribute("artista") Artista artista,
+    		@RequestParam("image") MultipartFile multipartFile,Model model, BindingResult bindingResult) throws IOException {
+    	
+    this.artistaValidator.validate(artista, bindingResult);
+      if (!bindingResult.hasErrors()) {
+    	String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+    	artista.setPhotos(fileName);
+    	
+    	Artista savedArtista =this.artistaService.inserisci(artista);
+    	
+    	String uploadDir = "artista-photos/" + savedArtista.getId();
+    	
+    	FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+    	
+    	return new RedirectView("artisti");
+    	}
+      return new RedirectView("artistaForm");
+}
+    @RequestMapping(value = "/admin/artisti", method = RequestMethod.GET)
+    public String getArtisti2(Model model) {
+    		model.addAttribute("artisti", this.artistaService.tutti());
+    		return "uploadSuccessful.html";
+    }
+    @RequestMapping(value="/admin/artistaForm", method = RequestMethod.GET)
+    public String addArtista2(Model model) {
+    	logger.debug("addArtista2");
+    	model.addAttribute("artista", new Artista());
         return "artistaForm.html";
     }
 }

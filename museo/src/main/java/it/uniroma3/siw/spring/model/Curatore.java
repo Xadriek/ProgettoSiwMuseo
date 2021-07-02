@@ -1,6 +1,6 @@
 package it.uniroma3.siw.spring.model;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.Map;
 
 import javax.persistence.CascadeType;
@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import lombok.Data;
 
@@ -27,7 +28,7 @@ public @Data class Curatore {
 	private String cognome;
 	
 	@Column(nullable=false)
-	private LocalDate dataDiNascita;
+	private Date dataDiNascita;
 	
 
 	@Column(nullable=false)
@@ -35,13 +36,22 @@ public @Data class Curatore {
 	
 	@Column(nullable=false)
 	private String email;
-	@Column(nullable=false)
+	@Column(nullable=true)
 	private Long telefono;
 	
 	@Column(nullable=false)
 	private Long matricola;
 	@OneToMany(mappedBy="curatore",cascade= {CascadeType.ALL})
 	private Map<Long,Collezione> collezioni;
+	
+	@Column(nullable = true, length = 64)
+    private String photos;
+	@Transient
+    public String getPhotosImagePath() {
+        if (this.getPhotos() == null || this.getId() == null) return null;
+         
+        return "/"+"curatore-photos" + "/"+ id + "/" + photos;
+    }
 	
 
 }

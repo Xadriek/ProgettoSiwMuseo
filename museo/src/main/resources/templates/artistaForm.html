@@ -54,18 +54,19 @@
 				<h6 class="heading"><span>Nazionalita:<input type="text" th:field="*{nazionalita}" /></span></h6>
 				<h6 class="heading"><span th:if="${#fields.hasErrors('nazionalita')}" th:errors="*{Nazionalita}"></span></h6>        </td>
         <td>
-				<h6 class="heading"><span>Email:<input type="text" th:field="*{email}" /></span></h6>
-				<h6 class="heading"><span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span></h6>
+				<h6 class="heading"><span>Descrizione:<input type="text" th:field="*{descrizione}" /></span></h6>
+				<h6 class="heading"><span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span></h6>
         <td>				
-				<h6 class="heading"><span>Telefono:<input type="text" th:field="*{telefono}" /></span></h6>
-				<h6 class="heading"><span th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></span></h6>
+				<h6 class="heading"><span>
+				<label>Photos: </label> <input type="file" name="image"
+						accept="image/png, image/jpeg" />
+				</span></h6>
         </td>
     	</tr>    		
 	</table>
 	<div>
 
-					<label>Photos: </label> <input type="file" name="image"
-						accept="image/png, image/jpeg" />
+					
 
 				</div>
 			<div>

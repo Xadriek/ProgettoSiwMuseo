@@ -42,10 +42,7 @@ public @Data class Artista {
 	private String nazionalita;
 	
 	@Column(nullable=false)
-	private String email;
-	
-	@Column(nullable=false)
-	private Long telefono;
+	private String descrizione;
 	
 	@OneToMany(mappedBy="artista",cascade= CascadeType.ALL)
 	private Map<Long,Opera> opere;

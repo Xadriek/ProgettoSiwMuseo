@@ -76,7 +76,7 @@ public class CuratoreController {
     	
     	Curatore savedCuratore =this.curatoreService.inserisci(curatore);
     	
-    	String uploadDir = "src/main/resources/static/curatore-photos/" + savedCuratore.getId();
+    	String uploadDir = "src/main/resources/static/images/curatore-photos/" + savedCuratore.getId();
     	
     	FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
     	

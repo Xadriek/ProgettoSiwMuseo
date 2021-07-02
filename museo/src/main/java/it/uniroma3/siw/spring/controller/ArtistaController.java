@@ -79,7 +79,7 @@ public class ArtistaController {
     	
     	Artista savedArtista =this.artistaService.inserisci(artista);
     	
-    	String uploadDir = "src/main/resources/static/artista-photos/" + savedArtista.getId();
+    	String uploadDir = "src/main/resources/static/images/artista-photos/" + savedArtista.getId();
     	
     	FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
     	

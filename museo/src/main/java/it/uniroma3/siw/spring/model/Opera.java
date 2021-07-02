@@ -38,9 +38,9 @@ public @Data class Opera {
 	
 	@Transient
     public String getPhotosImagePath() {
-        if (photos == null || id == null) return null;
+        if (this.getPhotos() == null || this.getId() == null) return null;
          
-        return "/opera-photos/" + id + "/" + photos;
+        return "/museo/src/main/resources/static/images/opera-photos" + id + "/" + photos;
     }
 
 	

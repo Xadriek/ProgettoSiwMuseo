@@ -28,7 +28,7 @@ public @Data class Collezione {
 	@Column(length=299)
 	private String descrizione;
 	
-	@OneToMany(mappedBy="collezione",cascade= {CascadeType.REMOVE,CascadeType.MERGE})
+	@OneToMany(mappedBy="collezione",cascade= {CascadeType.MERGE})
 	private Map<Long,Opera> opere;
 	
 	@ManyToOne

@@ -16,7 +16,14 @@ public class CollezioneService {
 	
 	@Autowired
 	private CollezioneRepository collezioneRepository; 
+	@Autowired
+	private CuratoreService curatoreService;
 	
+
+	
+
+	@Autowired
+	private OperaService operaService;
 	@Transactional
 	public Collezione inserisci(Collezione collezione) {
 		return collezioneRepository.save(collezione);
@@ -48,5 +55,13 @@ public class CollezioneService {
 			return true;
 		else 
 			return false;
+	}
+	public CuratoreService getCuratoreService() {
+		return curatoreService;
+	}
+	
+	
+	public OperaService getOperaService() {
+		return operaService;
 	}
 }

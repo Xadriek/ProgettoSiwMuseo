@@ -34,7 +34,17 @@
 		</td>
 		</tr>
 		<tr>
+		<li th:each="curatore : ${curatori}">
+				<a href="curatore.html" 
+				   th:href="@{'/curatore' + '/' + ${curatore.id}}" 
+				   th:text="|${curatore.nome} ${curatore.cognome}|">Paolo Rossi</a>
+			</li>
 		<td>
+		<li th:each="opera : ${opere}">
+				<a href="opera.html" 
+				   th:href="@{'/opera' + '/' + ${opera.id}}" 
+				   th:text="|${opera.titolo} ${opera.anno}|">Paolo Rossi</a>
+			</li>
 			<h6 class="heading"><span>	
 			<select name="Curatore"  >
     		<option value="1"> Curatore1 </option>

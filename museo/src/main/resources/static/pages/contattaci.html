@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head  th:replace="../fragments/base.html :: headerfiles(title='Progetto Museale')"> 
+</head>
+
+<body id="top">
+
+<div class="bgded" style="background-image:url('../images/backgrounds/01.png');"> 
+
+
+<!-- Top Info ####################################################################################### -->
+
+<header th:replace="../fragments/base.html :: intestazione"></header>
+<!-- ################################################################################################# -->
+
+  	
+<!-- Pagina Centrale ################################################################################# -->  	
+
+
+<div class="wrapper row3">
+  <main class="hoc container clear"> 
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+    <div class="content"> 
+      <div id="comments">
+        
+        <h2>Invia una email </h2>
+        <form action="#" method="post">
+          <div class="one_third first">
+            <label for="name">Nome <span>*</span></label>
+            <input type="text" name="name" id="name" value="" size="22" required>
+          </div>
+          <div class="one_third">
+            <label for="email">Mail <span>*</span></label>
+            <input type="email" name="email" id="email" value="" size="22" required>
+          </div>
+          
+          <div class="block clear">
+            <label for="comment">Testo</label>
+            <textarea name="comment" id="comment" cols="25" rows="10"></textarea>
+          </div>
+          <div>
+            <input type="submit" name="submit" value="Submit Form">
+            &nbsp;
+            <input type="reset" name="reset" value="Reset Form">
+          </div>
+        </form>
+      </div>
+      <!-- ################################################################################################ -->
+    </div>
+    <!-- ################################################################################################ -->
+    <!-- / main body -->
+    <div class="clear"></div>
+  </main>
+</div>
+
+
+<!-- footer       #################################################################################### -->  
+
+<div class="bgded overlay row4" style="background-image:url('images/backgrounds/01.png');">
+  <footer th:replace="fragments/base.html :: fondo(home='/')" id="footer" class="hoc clear"> 
+ <div class="wrapper coloured">
+  <section id="ctdetails" class="hoc clear"> 
+    <!-- ############################################################################################## -->
+    <ul class="nospace clear">
+      <li class="one_quarter first">
+        <div class="block clear"><a href="#"><i class="fas fa-phone"></i></a> <span><strong>Contattaci:</strong> +00 (123) 456 7890</span></div>
+      </li>
+      <li class="one_quarter">
+        <div class="block clear"><a href="#"><i class="fas fa-envelope"></i></a> <span><strong>Manda una email:</strong> support@domain.com</span></div>
+      </li>
+      <li class="one_quarter">
+        <div class="block clear"><a href="#"><i class="fas fa-clock"></i></a> <span><strong> Lunedi - Sabato:</strong> 08.00am - 18.00pm</span></div>
+      </li>
+      <li class="one_quarter">
+        <div class="block clear"><a href="https://goo.gl/maps/m5fg47TcDCkNfZEJ8" target="_blank"><i class="fas fa-map-marker-alt"></i></a> <span><strong>Dove Trovarci</strong><a href="https://goo.gl/maps/m5fg47TcDCkNfZEJ8" target="_blank">Indirizzo</a></span></div>
+      </li>
+    </ul>
+    <!-- ################################################################################################ -->
+  </section>
+</div>
+  </footer>
+</div>
+
+</body>
+</html>

@@ -52,7 +52,7 @@ public @Data class Artista {
 	
 	@Transient
     public String getPhotosImagePath() {
-        if (photos == null || id == null) return null;
+        if (this.getPhotos() == null || this.getId() == null) return null;
          
         return "/artista-photos/" + id + "/" + photos;
     }

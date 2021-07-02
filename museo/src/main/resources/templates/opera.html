@@ -11,7 +11,9 @@
 			
 		<div th:if="${opera}" th:object="${opera}">
 			<span th:text="*{titolo}">qui-va-titolo</span> <span th:text="*{anno}">qui-va-anno</span>
-			<img th:src="/@{${opera.photosImagePath}" />
+			<span>
+			<img th:src="/@{${opera.photosImagePath}}" />
+			</span>	
 		</div>
 		<div th:unless="${opera}">Non esiste</div>
 	</div>

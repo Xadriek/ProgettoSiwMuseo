@@ -48,7 +48,7 @@ public @Data class Curatore {
     private String photos;
 	@Transient
     public String getPhotosImagePath() {
-        if (photos == null || id == null) return null;
+        if (this.getPhotos() == null || this.getId() == null) return null;
          
         return "/curatore-photos/" + id + "/" + photos;
     }

@@ -58,7 +58,7 @@
               <li><a class="drop" href="#">Collezioni</a>
                 <ul>
                   <li><a th:href="@{/collezione}">Elenco Collezioni</a></li>
-                  <li><a th:href="@{/admin/collezione}">Inserisci dati collezione</a></li>
+                  <li><a sec:authorize="hasRole('ADMIN')" th:href="@{/admin/collezione}">Inserisci dati collezione</a></li>
                 </ul>
               </li>
               <li><a class="drop" href="#">Artisti</a>
@@ -76,16 +76,16 @@
               <li><a class="drop" href="#">Curatori</a>
                 <ul>
                   <li><a th:href="@{/curatore}">Elenco Curatori</a></li>
-                  <li><a th:href="@{/admin/curatore}">Inserisci dati curatore</a></li>
+                  <li><a  th:href="@{/admin/curatore}">Inserisci dati curatore</a></li>
                 </ul>
               </li>
               <li><a th:href="@{/logout}">Logout</a></li>
             </ul>
           </li>
  
-          <li><a href="#">Link Text</a></li>
-          <li><a href="#">Link Text</a></li>
-          <li><a href="#">Link Text</a></li>
+          <li><a href="pages/chisiamo.html">Chi Siamo</a></li>
+          <li><a href="pages/contattaci.html">Contattaci</a></li>
+
         </ul>
        
       </nav>

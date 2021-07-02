@@ -14,6 +14,19 @@
     <figcaption class="sectiontitle">
       <p class="nospace font-xs">Benvenuto <a sec:authentication="name">Ruolo di </a><a sec:authentication="principal.authorities"></a></p>
       
+ <h2>Welcome</h2>
+        <p>Spring Security Thymeleaf tutorial</p>
+        <div sec:authorize="hasRole('DEFAULT')">Text visible to user.</div>
+       
+        <div sec:authorize="isAuthenticated()">
+            Text visible only to authenticated users.
+        </div>
+        Authenticated username:
+        <div sec:authentication="name"></div>
+        Authenticated user roles:
+        <div sec:authentication="principal.authorities"></div>
+      
+      
     </figcaption>
         
     <ul class="nospace group">

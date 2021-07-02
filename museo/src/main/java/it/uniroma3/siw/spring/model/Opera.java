@@ -40,7 +40,7 @@ public @Data class Opera {
     public String getPhotosImagePath() {
         if (this.getPhotos() == null || this.getId() == null) return null;
          
-        return "/museo/src/main/resources/static/images/opera-photos" + id + "/" + photos;
+        return "/"+"opera-photos" + "/"+ id + "/" + photos;
     }
 
 	

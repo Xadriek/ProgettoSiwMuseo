@@ -8,6 +8,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  
 @Configuration
+
 public class MvcConfig implements WebMvcConfigurer {
  
  
@@ -24,6 +25,6 @@ public class MvcConfig implements WebMvcConfigurer {
          
         if (dirName.startsWith("../")) dirName = dirName.replace("../", "");
          
-        registry.addResourceHandler("src/main/resources/static/images/" + dirName + "/**").addResourceLocations("file:/"+ uploadPath + "/");
+        registry.addResourceHandler("/" + dirName + "/**").addResourceLocations("file:/"+ uploadPath + "/");
     }
 }

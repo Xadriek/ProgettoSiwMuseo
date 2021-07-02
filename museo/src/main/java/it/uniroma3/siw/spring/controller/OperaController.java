@@ -77,7 +77,7 @@ public class OperaController {
     	
     	Opera savedOpera =this.operaService.inserisci(opera);
     	
-    	String uploadDir = "src/main/resources/static/images/opera-photos/" + savedOpera.getId();
+    	String uploadDir = "opera-photos/" + savedOpera.getId();
     	
     	FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
     	

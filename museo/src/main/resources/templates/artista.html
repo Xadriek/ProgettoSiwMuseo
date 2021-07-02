@@ -11,6 +11,9 @@
     	<div th:if="${artista}" th:object="${artista}">
 			<span th:text="*{nome}">qui-va-nome</span>
 			<span th:text="*{cognome}">qui-va-cognome</span>
+			<span>
+			<img th:src="@{${artista.photosImagePath}}"/>
+			</span>	
    		</div>
     	<div th:unless="${artista}">Non esiste</div>
     </div>

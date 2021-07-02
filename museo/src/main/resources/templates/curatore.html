@@ -11,6 +11,9 @@
     	<div th:if="${curatore}" th:object="${curatore}">
 			<span th:text="*{nome}">qui-va-nome</span>
 			<span th:text="*{cognome}">qui-va-cognome</span>
+			<span>
+			<img th:src="@{${curatore.photosImagePath}}"/>
+			</span>	
    		</div>
     	<div th:unless="${curatore}">Non esiste</div>
     </div>

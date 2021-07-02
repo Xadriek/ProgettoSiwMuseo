@@ -18,7 +18,7 @@
 		</div>
 		
 		
-	<form th:action="@{/admin/curatore}" method="POST" th:object="${curatore}" enctype="multipart/form-data">
+	<form th:action="@{curatore}" method="POST" th:object="${curatore}" enctype="multipart/form-data">
 		<div th:if="${#fields.hasGlobalErrors()}">
   			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 		</div>
@@ -59,7 +59,10 @@
 				</span></h6>
     	</td>
         <td>
-			<h6 class="heading"><span></span></h6>
+			<td>				
+			<h6 class="heading"><span>Matricola:<input type="text" th:field="*{matricola}" /></span></h6>
+			<h6 class="heading"><span th:if="${#fields.hasErrors('matricola')}" th:errors="*{matricola}"></span></h6>
+        </td>
 		</td>
         <td>
 			<h6 class="heading"><span></span></h6>

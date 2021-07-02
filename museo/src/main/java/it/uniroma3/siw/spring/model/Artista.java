@@ -54,7 +54,7 @@ public @Data class Artista {
     public String getPhotosImagePath() {
         if (this.getPhotos() == null || this.getId() == null) return null;
          
-        return "/artista-photos/" + id + "/" + photos;
+        return "/"+"artista-photos" + "/"+ id + "/" + photos;
     }
 	
 

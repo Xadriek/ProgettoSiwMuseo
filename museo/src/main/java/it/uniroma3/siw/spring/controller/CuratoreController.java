@@ -66,7 +66,7 @@ public class CuratoreController {
         return "curatoreForm.html";
     }*/
     @PostMapping("/admin/curatore")
-    public RedirectView newCuratore(@ModelAttribute("opera") Curatore curatore,
+    public RedirectView newCuratore(@ModelAttribute("curatore") Curatore curatore,
     		@RequestParam("image") MultipartFile multipartFile,Model model, BindingResult bindingResult) throws IOException {
     	
     this.curatoreValidator.validate(curatore, bindingResult);
@@ -76,7 +76,7 @@ public class CuratoreController {
     	
     	Curatore savedCuratore =this.curatoreService.inserisci(curatore);
     	
-    	String uploadDir = "src/main/resources/static/images/curatore-photos/" + savedCuratore.getId();
+    	String uploadDir = "curatore-photos/" + savedCuratore.getId();
     	
     	FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
     	
@@ -91,7 +91,7 @@ public class CuratoreController {
     }
     @RequestMapping(value="/admin/curatoreForm", method = RequestMethod.GET)
     public String addCuratori2(Model model) {
-    	logger.debug("addCuratore");
+    	logger.debug("addCuratoreFailed");
     	model.addAttribute("curatore", new Curatore());
         return "curatoreForm.html";
     }

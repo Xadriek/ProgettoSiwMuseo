@@ -50,7 +50,7 @@ public @Data class Curatore {
     public String getPhotosImagePath() {
         if (this.getPhotos() == null || this.getId() == null) return null;
          
-        return "/curatore-photos/" + id + "/" + photos;
+        return "/"+"curatore-photos" + "/"+ id + "/" + photos;
     }
 	
 

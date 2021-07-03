@@ -46,6 +46,7 @@ public @Data class Curatore {
 	
 	@Column(nullable = true, length = 64)
     private String photos;
+	
 	@Transient
     public String getPhotosImagePath() {
         if (this.getPhotos() == null || this.getId() == null) return null;

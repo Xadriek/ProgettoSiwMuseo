@@ -4,51 +4,30 @@
 
 <body id="top">
 	<header th:replace="fragments/baseadmin.html :: intestazione"></header>
-	<div class="wrapper row3">
- 	<main class="hoc container clear"> 
-    <!-- main body -->
-    <!-- ############################################################################################# -->
-    <section class="group">
-      <div class="one_half first"><img class="inspace-15 borderedbox" src="images/pic01.png" alt=""></div>
-      <div class="one_half">
- 
- <!-- devo capire come inserire la lista############################### -->
- 
- 
- 		<div>
-    	<h6 class="heading" th:text="#{header.collezioni}">List of collections</h6>
-		<ul>
-			<li th:each="collezione : ${collezioni}">
-				<a href="collezione.html" 
-				   th:href="@{'/collezione' + '/' + ${collezione.id}}" 
-				   th:text="|${collezione.nome} ${collezione.descrizione}|">nome e descrizione collezione</a>
-			</li>
-		</ul>
-		</div>
-	<select name="collezione" size="5" multiple="multiple">
-    <option value="1"> collezione1 </option>
-    <option value="2"> collezione2 </option>
-    <option value="3"> collezione3 </option>
-    <option value="4"> collezione4 </option>
-    <option value="5"> collezione5 </option>
-    <option value="6"> collezione6 </option>
-    <option value="1"> collezione1 </option>
-    <option value="2"> collezione2 </option>
-    <option value="3"> collezione3 </option>
-    <option value="4"> collezione4 </option>
-    <option value="5"> collezione5 </option>
-    <option value="6"> collezione6 </option>
-	</select>
-		</div>
-	  <div>
-	  </div>
-    
-    </section>
-    <!-- ############################################################################################# -->
-    <!-- / main body -->
-    <div class="clear"></div>
-  </main>
-</div>
+	
+	
+<div class="bgded overlay" style="background-image:url('images/backgrounds/01.png');">
+  <figure class="hoc container clear imgroup"> 
+    <!-- ################################################################################################ -->
+    <figcaption class="sectiontitle">
+      <p class="heading underline font-x2" th:text="#{header.collezioni}">List of collections</p>
+    </figcaption>
+    <ul class="nospace group">
+    <th:block th:each="collezione : ${collezioni}">
+    <li class="one_third">
+	<a class="imgover" href="collezione.html" th:href="@{'/collezione' + '/' + ${collezione.id}}">
+	<!-- inserire l'immagine della collezione iterata -->
+	<img src="images/pic1.png" alt=""> 
+	<h6 class="heading" th:text="|${collezione.nome} ${collezione.descrizione}|">prova</h6></a>
+	</li>
+    </th:block>	
+     </ul>
+    <!-- ################################################################################################ -->
+  </figure>
+  <!-- ################################################################################################ -->
+  
+</div>	
+
 	<footer th:replace="fragments/baseadmin.html :: fondo"></footer>
 </body>
 </html>

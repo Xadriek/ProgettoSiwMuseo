@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import lombok.Data;
 
@@ -32,5 +33,15 @@ public @Data class Collezione {
 	
 	@ManyToOne
 	private Curatore curatore;
+	
+	@Column(nullable = true, length = 64)
+    private String photos;
+	
+	@Transient
+    public String getPhotosImagePath() {
+        if (this.getPhotos() == null || this.getId() == null) return null;
+         
+        return "/"+"collezione-photos" + "/"+ id + "/" + photos;
+    }
 
 }

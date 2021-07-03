@@ -20,8 +20,6 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import it.uniroma3.siw.spring.controller.validator.CollezioneValidator;
 import it.uniroma3.siw.spring.model.Collezione;
-import it.uniroma3.siw.spring.model.Curatore;
-import it.uniroma3.siw.spring.model.Opera;
 import it.uniroma3.siw.spring.service.CollezioneService;
 import it.uniroma3.siw.upload.FileUploadUtil;
 
@@ -74,7 +72,7 @@ public class CollezioneController {
     	Collezione savedCollezione =this.collezioneService.inserisci(collezione);
     	
     	String uploadDir = "collezione-photos/" + savedCollezione.getId();
-    	
+    	model.addAttribute("collezioni", this.collezioneService.tutti());
     	FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
     	
     	return new RedirectView("collezione");
@@ -85,7 +83,7 @@ public class CollezioneController {
         
     @RequestMapping(value = "/admin/collezioni", method = RequestMethod.GET)
     public String getCollezioni2(Model model) {
-		model.addAttribute("collezioni", this.collezioneService.tutti());
+		
 		return "uploadSuccessful.html";
     }
     
@@ -93,6 +91,7 @@ public class CollezioneController {
     public String addCollezioni2(Model model) {
     	logger.debug("addCollezioneFailed");
     	model.addAttribute("collezione", new Collezione());
+    	model.addAttribute("curatori",this.collezioneService.getCuratoreService().tutti());
     	return "collezioneForm.html";
     }	   
 

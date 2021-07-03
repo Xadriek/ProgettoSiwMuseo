@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments/baseadmin.html :: headerfiles(title='Progetto Museale')"> </head>
+	<head th:replace="fragments/baseadmin.html :: headerfiles(title='Progetto Museale')">
+	 </head>
 
 <body id="top">
 	<header th:replace="fragments/baseadmin.html :: intestazione"></header>
 	
 	
 <div class="bgded overlay" style="background-image:url('images/backgrounds/01.png');">
-  <figure class="hoc container clear imgroup"> 
+   <figure class="hoc container clear imgroup"> 
     <!-- ################################################################################################ -->
     <figcaption class="sectiontitle">
       <p class="heading underline font-x2" th:text="#{header.collezioni}">List of collections</p>
     </figcaption>
     <ul class="nospace group">
-    <th:block th:each="collezione : ${collezioni}">
-    <li class="one_third">
-	<a class="imgover" href="collezione.html" th:href="@{'/collezione' + '/' + ${collezione.id}}">
-	<!-- inserire l'immagine della collezione iterata -->
-	<img src="images/pic1.png" alt=""> 
-	<h6 class="heading" th:text="|${collezione.nome} ${collezione.descrizione}|">prova</h6></a>
-	</li>
-    </th:block>	
+		<div class="boxFox" th:each="collezione : ${collezioni}">
+			<img th:src="@{${collezione.photosImagePath}}" width="120" height="168"/>
+			<a href="collezione.html" 
+			 th:href="@{'/collezione' + '/' + ${collezione.id}}" 
+			th:text="|${collezione.nome} ${collezione.descrizione}|">Paolo Rossi</a>
+		
+	
      </ul>
     <!-- ################################################################################################ -->
-  </figure>
+  </figure> 
   <!-- ################################################################################################ -->
   
 </div>	

@@ -1,44 +1,57 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments/baseadmin.html :: headerfiles(title='Progetto Museale')"> </head>
+<head
+	th:replace="fragments/baseadmin.html :: headerfiles(title='Progetto Museale')">
+</head>
 
 <body id="top">
-	<div th:if="${role}=='ADMIN'"> 
-	<header  th:replace="fragments/baseadmin.html :: intestazione"></header>
+	<div th:if="${role}=='ADMIN'">
+		<header th:replace="fragments/baseadmin.html :: intestazione"></header>
 	</div>
-	<div th:unless="${role}=='ADMIN'"> 
-	<header  th:replace="fragments/base.html :: intestazione"></header>
+	<div th:unless="${role}=='ADMIN'">
+		<header th:replace="fragments/base.html :: intestazione"></header>
 	</div>
-	
 
- 
- <!-- Gallery Photo ################################################################################### -->  
 
- <section class="group">
-	<div class="bgded overlay" style="background-image:url('images/backgrounds/01.png');">
-  	<figure class="hoc container clear imgroup"> 
-    <!-- ################################################################################################ -->
-    <figcaption class="sectiontitle">
-      <p class="nospace font-xs">Benvenuto <a sec:authentication="name">Ruolo di </a><a sec:authentication="principal.authorities"></a></p>
-   
- 
-      
-    </figcaption>
-        
-    <ul class="nospace group">
-      <li class="one_third"><a class="imgover" href="#"><img src="images/pic1.png" alt=""></a></li>
-      <li class="one_third"><a class="imgover" href="#"><img src="images/pic2.png" alt=""></a></li>
-      <li class="one_third"><a class="imgover" href="#"><img src="images/pic3.png" alt=""></a></li>
-      <li class="one_third"><a class="imgover" href="#"><img src="images/pic4.png" alt=""></a></li>
-      <li class="one_third"><a class="imgover" href="#"><img src="images/pic5.png" alt=""></a></li>
-      <li class="one_third"><a class="imgover" href="#"><img src="images/pic6.png" alt=""></a></li>
-    </ul>
-    <!-- ################################################################################################ -->
-  </figure>
-  <!-- ############################################################################################### -->
-  	</div>
-  </section>
- 
-    <footer th:replace="fragments/base.html :: fondo(home='/default')"></footer>
+
+	<!-- Gallery Photo ################################################################################### -->
+
+	<section class="group">
+		<div class="bgded overlay"
+			style="background-image: url('images/backgrounds/01.png');">
+			<figure class="hoc container clear imgroup">
+				<!-- ################################################################################################ -->
+				<figcaption class="sectiontitle">
+					<p class="nospace font-xs">
+						Benvenuto <a sec:authentication="name">Ruolo di </a><a
+							sec:authentication="principal.authorities"></a>
+					</p>
+
+
+
+				</figcaption>
+				<div>
+					<ul class="nospace group">
+						
+						<li class="two_quarter"><a class="imgover"
+							th:href="@{/collezione}"><img src="images/pic1.png" alt="">Collezioni</a></li>
+						<li class="two_quarter"><a class="imgover"
+							th:href="@{/artista}"><img src="images/pic2.png" alt=""></a>Artisti</li>
+						<li class="two_quarter"><a class="imgover" th:href="@{/opera}"><img
+								src="images/pic3.png" alt=""></a>Opere</li>
+						<li class="two_quarter"><a class="imgover"
+							th:href="@{/curatore}"><img src="images/pic4.png" alt=""></a>Curatori</li>
+					</ul>
+
+				</div>
+		</div>
+				<a th:href="@{/logout}" style="text-align: center;">Logout</a>
+		<!-- ################################################################################################ -->
+		</figure>
+		<!-- ############################################################################################### -->
+		</div>
+	</section>
+
+	<footer th:replace="fragments/base.html :: fondo(home='/default')"></footer>
 </body>
 </html>

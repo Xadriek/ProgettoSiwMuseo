@@ -43,7 +43,9 @@ public class ArtistaController {
 
     @RequestMapping(value = "/artista/{id}", method = RequestMethod.GET)
     public String getArtista(@PathVariable("id") Long id, Model model) {
-    	model.addAttribute("artista", this.artistaService.artistaPerId(id));
+    	Artista artista=this.artistaService.artistaPerId(id);
+    	model.addAttribute("artista",artista );
+    	model.addAttribute("opere",artista.getOpere() );
     	return "artista.html";
     }
 

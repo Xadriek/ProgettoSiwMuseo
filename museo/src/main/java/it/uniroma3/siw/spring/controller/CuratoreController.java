@@ -44,7 +44,9 @@ public class CuratoreController {
 
     @RequestMapping(value = "/curatore/{id}", method = RequestMethod.GET)
     public String getCuratore(@PathVariable("id") Long id, Model model) {
-    	model.addAttribute("curatore", this.curatoreService.curatorePerId(id));
+    	Curatore curatore=this.curatoreService.curatorePerId(id);
+    	model.addAttribute("curatore",curatore );
+    	model.addAttribute("curatore",curatore.getCollezioni() );
     	return "curatore.html";
     }
 

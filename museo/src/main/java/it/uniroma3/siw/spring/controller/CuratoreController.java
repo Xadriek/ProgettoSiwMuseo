@@ -105,7 +105,7 @@ public class CuratoreController {
     	logger.debug("UpdateCuratore");
     	model.addAttribute("curatore", this.curatoreService.curatorePerId(id));
 
-        return "curatoreForm.html";
+        return "curatoreFormMod.html";
     }
     @RequestMapping(value="/admin/curatore/{id}", method= RequestMethod.GET)
     public String removeCuratore(@PathVariable("id")Long id, Model model) {

@@ -48,7 +48,10 @@ public class CollezioneController {
 
     @RequestMapping(value = "/collezione/{id}", method = RequestMethod.GET)
     public String getCollezione(@PathVariable("id") Long id, Model model) {
-    	model.addAttribute("collezione", this.collezioneService.collezionePerId(id));
+    	Collezione collezione=this.collezioneService.collezionePerId(id);
+    	model.addAttribute("collezione", collezione);
+    	model.addAttribute("opere", collezione.getOpere());
+    	model.addAttribute("curatore", collezione.getCuratore());
     	return "collezione.html";
     }
 

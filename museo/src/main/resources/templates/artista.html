@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments/baseadmin.html :: headerfiles(title=#{pageTitle.artista})"> </head>
-	
+<head
+	th:replace="fragments/baseadmin.html :: headerfiles(title=#{pageTitle.artista})">
+</head>
+
 <body id="top">
 	<header th:replace="fragments/baseadmin.html :: intestazione"></header>
-	
-    <div>
-    	<h6 class="heading" th:text="#{header.artista}">Artista</h6>
-    	
-    	<div th:if="${artista}" th:object="${artista}">
-			<span th:text="*{nome}">qui-va-nome</span>
-			<span th:text="*{cognome}">qui-va-cognome</span>
-			<div th:if="${session.role}=='ADMIN'"> 
-				<a th:href="@{'/admin/artista' + '/' + ${artista.id}}"  >modifica</a>
-				<a th:href="@{'/admin/artista' + '/' + ${artista.id}}"  >elimina</a>
+
+	<div>
+		<h6 class="heading" th:text="#{header.artista}">Artista</h6>
+
+		<div th:if="${artista}" th:object="${artista}">
+			<span th:text="*{nome}">qui-va-nome</span> <span th:text="*{cognome}">qui-va-cognome</span>
+			<div th:if="${session.role}=='ADMIN'">
+				<a th:href="@{'/admin/modArtista' + '/' + ${artista.id}}">modifica</a>
+				<a th:href="@{'/admin/artista' + '/' + ${artista.id}}">elimina</a>
 			</div>
-			<span>
-			<img th:src="@{${artista.photosImagePath}}"/>
-			</span>	
-   		</div>
-    	<div th:unless="${artista}">Non esiste</div>
-    </div>
-    <footer th:replace="fragments/baseadmin.html :: fondo"></footer>
+			<span> <img th:src="@{${artista.photosImagePath}}" />
+			</span>
+		</div>
+		<div th:unless="${artista}">Non esiste</div>
+	</div>
+	<th:block th:each="opera : ${opere}">
+
+		<li class="one_third"><a class="imgover" href="opera.html"
+			th:href="@{'/opera' + '/' + ${opera.id}}"> <img
+				th:src="@{${opera.photosImagePath}}" width="120" height="168" />
+				<figcaption>
+					<em th:text="|${opera.titolo} ${opera.anno}|">prova</em>
+				</figcaption></a></li>
+	</th:block>
+	<footer th:replace="fragments/baseadmin.html :: fondo"></footer>
 </body>
 </html>

@@ -25,7 +25,7 @@
 			
 			<span th:text="*{descrizione}">qui-va-descrizione</span>
 			<div th:if="${session.role}=='ADMIN'"> 
-				<a th:href="@{'/admin/collezione' + '/' + ${collezione.id}}"  >modifica</a>
+				<a th:href="@{'/admin/modCollezione' + '/' + ${collezione.id}}"  >modifica</a>
 				<a th:href="@{'/admin/collezione' + '/' + ${collezione.id}}"  >elimina</a>
 			</div>
 			<span>

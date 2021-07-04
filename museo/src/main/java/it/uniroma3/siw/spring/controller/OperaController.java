@@ -49,11 +49,10 @@ public class OperaController {
     public String getOpera(@PathVariable("id") Long id, Model model) {
     	Opera opera=this.operaService.operaPerId(id);
     	model.addAttribute("opera",opera );
-    	model.addAttribute("opera",opera.getCollezione() );
-    	model.addAttribute("opera",opera.getArtista() );
+
     	return "opera.html";
     }
-    @RequestMapping(value="/admin/opera/{id}", method= RequestMethod.GET)
+    @RequestMapping(value="/admin/operaRemove/{id}", method= RequestMethod.GET)
     public String removeOpera(@PathVariable("id")Long id, Model model) {
     	logger.debug("inizio eliminazione");
     		this.operaService.deletedOpera(id);

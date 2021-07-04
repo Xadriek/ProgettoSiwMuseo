@@ -46,7 +46,6 @@ public class CuratoreController {
     public String getCuratore(@PathVariable("id") Long id, Model model) {
     	Curatore curatore=this.curatoreService.curatorePerId(id);
     	model.addAttribute("curatore",curatore );
-    	model.addAttribute("curatore",curatore.getCollezioni() );
     	return "curatore.html";
     }
 

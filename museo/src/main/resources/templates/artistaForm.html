@@ -24,37 +24,37 @@
 	<table>
     	<tr>
         <td>
-        	<h6 class="heading"><span>Nome:<input type="text" th:field="*{nome}" /></span></h6>
+        	<h6 class="heading"><span>Nome:<input type="text" th:field="*{nome}" id="artista" th:placeholder="${artista.nome}" /></span></h6>
 			<h6 class="heading"><span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span></h6>
         </td>
         <td>
-        	<h6 class="heading"><span>Cognome:<input type="text" th:field="*{cognome}" /></span></h6>
+        	<h6 class="heading"><span>Cognome:<input type="text" th:field="*{cognome}" id="artista" th:placeholder="${artista.cognome}" /></span></h6>
 			<h6 class="heading"><span th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></span></h6>
         </td>
         <td>				
-        	<h6 class="heading"><span>Data di nascita:<input type="text" th:field="*{dataDiNascita}" /></span></h6>
+        	<h6 class="heading"><span>Data di nascita:<input type="text" th:field="*{dataDiNascita}" id="artista" th:placeholder="${artista.dataDiNascita}"/></span></h6>
 			<h6 class="heading"><span th:if="${#fields.hasErrors('dataDiNascita')}" th:errors="*{dataDiNascita}"></span></h6>
         </td>
     	</tr>
     	<tr>
         <td>
- 				<h6 class="heading"><span>Data di morte:<input type="text" th:field="*{dataDiMorte}" /></span></h6>
+ 				<h6 class="heading"><span>Data di morte:<input type="text" th:field="*{dataDiMorte}" id="artista" th:placeholder="${artista.dataDiMorte}"/></span></h6>
 				<h6 class="heading"><span th:if="${#fields.hasErrors('dataDiMorte')}" th:errors="*{dataDiMorte}"></span></h6>
         </td>
         <td>
-				<h6 class="heading"><span>Luogo Nascita:<input type="text" th:field="*{luogoNascita}" /></span></h6>
+				<h6 class="heading"><span>Luogo Nascita:<input type="text" th:field="*{luogoNascita}" id="artista" th:placeholder="${artista.luogoNascita}"/></span></h6>
 				<h6 class="heading"><span th:if="${#fields.hasErrors('luogoNascita')}" th:errors="*{luogoNascita}"></span></h6>        </td>
         <td>				
-				<h6 class="heading"><span>Luogo Morte:<input type="text" th:field="*{luogoMorte}" /></span></h6>
+				<h6 class="heading"><span>Luogo Morte:<input type="text" th:field="*{luogoMorte}" id="artista" th:placeholder="${artista.luogoMorte}"/></span></h6>
 				<h6 class="heading"><span th:if="${#fields.hasErrors('luogoMorte')}" th:errors="*{luogoMorte}"></span></h6>
         </td>
     	</tr>    
     	   	<tr>
         <td>
-				<h6 class="heading"><span>Nazionalita:<input type="text" th:field="*{nazionalita}" /></span></h6>
+				<h6 class="heading"><span>Nazionalita:<input type="text" th:field="*{nazionalita}" id="artista" th:placeholder="${artista.nazionalita}"/></span></h6>
 				<h6 class="heading"><span th:if="${#fields.hasErrors('nazionalita')}" th:errors="*{Nazionalita}"></span></h6>        </td>
         <td>
-				<h6 class="heading"><span>Descrizione:<input type="text" th:field="*{descrizione}" /></span></h6>
+				<h6 class="heading"><span>Descrizione:<input type="text" th:field="*{descrizione}" id="artista" th:placeholder="${artista.descrizione}"/></span></h6>
 				<h6 class="heading"><span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span></h6>
         <td>				
 				<h6 class="heading"><span>

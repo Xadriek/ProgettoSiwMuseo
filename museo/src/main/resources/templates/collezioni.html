@@ -14,12 +14,24 @@
       <p class="heading underline font-x2" th:text="#{header.collezioni}">List of collections</p>
     </figcaption>
     <ul class="nospace group">
+    
+    <th:block th:each="collezione : ${collezioni}">
+    
+    <li class="one_third">
+	<a class="imgover" href="collezione.html" th:href="@{'/collezione' + '/' + ${collezione.id}}">
+	
+	<img th:src="@{${collezione.photosImagePath}}" width="120" height="168"/>
+	<figcaption><em th:text="|${collezione.nome} ${collezione.descrizione}|">prova</em></figcaption></a>
+	</li>
+    </th:block>
+    
+  <!-- #   
 		<div class="boxFox" th:each="collezione : ${collezioni}">
 			<img th:src="@{${collezione.photosImagePath}}" width="120" height="168"/>
 			<a href="collezione.html" 
 			 th:href="@{'/collezione' + '/' + ${collezione.id}}" 
 			th:text="|${collezione.nome} ${collezione.descrizione}|">Paolo Rossi</a>
-		
+## -->		
 	
      </ul>
     <!-- ################################################################################################ -->

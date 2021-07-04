@@ -75,7 +75,7 @@ public class CollezioneController {
     	model.addAttribute("collezioni", this.collezioneService.tutti());
     	FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
     	
-    	return new RedirectView("collezione");
+    	return new RedirectView("collezioni");
     	}
       return new RedirectView("collezioneForm");
     }

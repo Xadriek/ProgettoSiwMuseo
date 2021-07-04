@@ -49,5 +49,15 @@ public class ArtistaService {
 		else 
 			return false;
 	}
+	@Transactional
+	public boolean deletedArtista(Long id) {
+		try {
+			this.artistaRepository.deleteById(id);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+		
+	}
 
 }

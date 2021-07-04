@@ -64,4 +64,10 @@ public class CollezioneService {
 	public OperaService getOperaService() {
 		return operaService;
 	}
+	@Transactional
+	public void deletedCollezione(Long id) {
+		
+		this.collezioneRepository.deleteById(id);
+		
+	}
 }

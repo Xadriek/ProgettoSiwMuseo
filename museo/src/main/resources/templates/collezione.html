@@ -23,6 +23,10 @@
      	<div th:if="${collezione}" th:object="${collezione}">
 			<span th:text="*{nome}">qui-va-nome</span>
 			<span th:text="*{descrizione}">qui-va-descrizione</span>
+			<div th:if="${session.role}=='ADMIN'"> 
+				<a th:href="@{'/admin/collezione' + '/' + ${collezione.id}}"  >modifica</a>
+				<a th:href="@{'/admin/collezione' + '/' + ${collezione.id}}"  >elimina</a>
+			</div>
 			<span>
 <!-- 			<img th:src="@{${collezione.photosImagePath}}"/>  -->
 			</span>	

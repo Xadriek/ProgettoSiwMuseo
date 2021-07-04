@@ -36,7 +36,7 @@ public class OperaController {
     
 
     @RequestMapping(value="/admin/opera", method = RequestMethod.GET)
-    public String addOpera(Model model) {
+    public String addOpera(Model model,String role) {
     	logger.debug("addOpera");
     	model.addAttribute("opera", new Opera());
     	model.addAttribute("collezioni",this.operaService.getCollezioneService().tutti());
@@ -50,10 +50,30 @@ public class OperaController {
     	model.addAttribute("opera", this.operaService.operaPerId(id));
     	return "opera.html";
     }
+    @RequestMapping(value="/admin/opera/{id}", method= RequestMethod.GET)
+    public String removeOpera(@PathVariable("id")Long id, Model model) {
+    	logger.debug("inizio eliminazione");
+    		this.operaService.deletedOpera(id);
+    		logger.debug("opera cancellata");
+    		model.addAttribute("opere",this.operaService.tutti());
+    		return "opere.html";
+		
+    		
+    }
+    @RequestMapping(value="/modOpera/{id}",method= RequestMethod.GET)
+    public String updateOpera(@PathVariable("id")Long id, Model model) {
+    	logger.debug("UpdateOpera");
+    	model.addAttribute("opera", this.operaService.operaPerId(id));
+    	model.addAttribute("collezioni",this.operaService.getCollezioneService().tutti());
+    	model.addAttribute("artisti",this.operaService.getArtistaService().tutti());
+
+        return "operaForm.html";
+    }
 
     @RequestMapping(value = "/opera", method = RequestMethod.GET)
     public String getOpere(Model model) {
     		model.addAttribute("opere", this.operaService.tutti());
+
     		return "opere.html";
     }
     
@@ -70,7 +90,7 @@ public class OperaController {
     }*/
     @PostMapping("/admin/opera")
     public RedirectView newOpera(@ModelAttribute("opera") Opera opera,
-    		@RequestParam("image") MultipartFile multipartFile,Model model, BindingResult bindingResult) throws IOException {
+    		@RequestParam("image") MultipartFile multipartFile,Model model, BindingResult bindingResult,String role) throws IOException {
     	
     this.operaValidator.validate(opera, bindingResult);
       if (!bindingResult.hasErrors()) {
@@ -84,6 +104,7 @@ public class OperaController {
     	
     	FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
     	model.addAttribute("opere", this.operaService.tutti());
+    	model.addAttribute("role", role);
     	return new RedirectView("opere");
     	}
       return new RedirectView("operaForm");

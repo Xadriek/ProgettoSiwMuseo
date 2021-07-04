@@ -98,4 +98,21 @@ public class ArtistaController {
     	model.addAttribute("artista", new Artista());
         return "artistaForm.html";
     }
+    @RequestMapping(value="/modArtista",method= RequestMethod.GET)
+    public String updateArtista(Long id, Model model) {
+    	logger.debug("UpdateArtista");
+    	model.addAttribute("artista", this.artistaService.artistaPerId(id));
+
+        return "artistaForm.html";
+    }
+    @RequestMapping(value="/admin/artista/{id}", method= RequestMethod.GET)
+    public String removeArtista(@PathVariable("id")Long id, Model model) {
+    	logger.debug("inizio eliminazione");
+    		this.artistaService.deletedArtista(id);
+    		logger.debug("artista cancellato");
+    		model.addAttribute("artisti",this.artistaService.tutti());
+    		return "artisti.html";
+		
+    		
+    }
 }

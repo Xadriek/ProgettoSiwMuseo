@@ -9,7 +9,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import it.uniroma3.siw.spring.model.Collezione;
 import it.uniroma3.siw.spring.model.Opera;
 import it.uniroma3.siw.spring.repository.OperaRepository;
 
@@ -45,6 +44,16 @@ public class OperaService {
 			return optional.get();
 		else 
 			return null;
+	}
+	@Transactional
+	public boolean deletedOpera(Long id) {
+		try {
+			this.operaRepository.deleteById(id);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+		
 	}
 
 	@Transactional

@@ -11,10 +11,15 @@
 			
 		<div th:if="${opera}" th:object="${opera}">
 			<span th:text="*{titolo}">qui-va-titolo</span> <span th:text="*{anno}">qui-va-anno</span>
+			<div th:if="${session.role}=='ADMIN'"> 
+				<a th:href="@{'/admin/opera' + '/' + ${opera.id}}"  >modifica</a>
+				<a th:href="@{'/admin/opera' + '/' + ${opera.id}}"  >elimina</a>
+			</div>
 			<span>
 			<img th:src="@{${opera.photosImagePath}}"/>
 			</span>	
 		</div>
+		
 		<div th:unless="${opera}">Non esiste</div>
 	</div>
     <footer th:replace="fragments/baseadmin.html :: fondo"></footer>

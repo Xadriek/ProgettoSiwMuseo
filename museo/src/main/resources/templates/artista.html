@@ -11,6 +11,10 @@
     	<div th:if="${artista}" th:object="${artista}">
 			<span th:text="*{nome}">qui-va-nome</span>
 			<span th:text="*{cognome}">qui-va-cognome</span>
+			<div th:if="${session.role}=='ADMIN'"> 
+				<a th:href="@{'/admin/artista' + '/' + ${artista.id}}"  >modifica</a>
+				<a th:href="@{'/admin/artista' + '/' + ${artista.id}}"  >elimina</a>
+			</div>
 			<span>
 			<img th:src="@{${artista.photosImagePath}}"/>
 			</span>	

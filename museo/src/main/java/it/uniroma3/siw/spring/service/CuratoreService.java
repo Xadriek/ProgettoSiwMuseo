@@ -57,4 +57,14 @@ public class CuratoreService {
 		else 
 			return false;
 	}
+	@Transactional
+	public boolean deletedCuratore(Long id) {
+		try {
+			this.curatoreRepository.deleteById(id);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+		
+	}
 }

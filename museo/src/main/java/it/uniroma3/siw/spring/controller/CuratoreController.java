@@ -95,4 +95,21 @@ public class CuratoreController {
     	model.addAttribute("curatore", new Curatore());
         return "curatoreForm.html";
     }
+    @RequestMapping(value="/admin/modCuratore/{id}",method= RequestMethod.GET)
+    public String updateCuratore(@PathVariable("id")Long id, Model model) {
+    	logger.debug("UpdateCuratore");
+    	model.addAttribute("curatore", this.curatoreService.curatorePerId(id));
+
+        return "curatoreForm.html";
+    }
+    @RequestMapping(value="/admin/curatore/{id}", method= RequestMethod.GET)
+    public String removeCuratore(@PathVariable("id")Long id, Model model) {
+    	logger.debug("inizio eliminazione");
+    		this.curatoreService.deletedCuratore(id);
+    		logger.debug("curatore cancellato");
+    		model.addAttribute("curatori",this.curatoreService.tutti());
+    		return "curatori.html";
+		
+    		
+    }
 }

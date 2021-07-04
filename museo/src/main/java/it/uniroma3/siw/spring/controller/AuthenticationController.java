@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import it.uniroma3.siw.spring.controller.validator.CredentialsValidator;
 import it.uniroma3.siw.spring.controller.validator.UserValidator;
@@ -17,6 +18,7 @@ import it.uniroma3.siw.spring.model.User;
 import it.uniroma3.siw.spring.service.CredentialsService;
 
 @Controller
+@SessionAttributes(value="role", types= {String.class})
 public class AuthenticationController {
 	
 	@Autowired
@@ -27,6 +29,14 @@ public class AuthenticationController {
 	
 	@Autowired
 	private CredentialsValidator credentialsValidator;
+	
+	@RequestMapping("role")
+	public String roleUser() {
+		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+    	String role=credentials.getRole();
+    	return role;
+	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET) 
 	public String showRegisterForm (Model model) {
@@ -47,10 +57,8 @@ public class AuthenticationController {
 	
     @RequestMapping(value = "/default", method = RequestMethod.GET)
     public String defaultAfterLogin(Model model) {
-        
-    	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    	Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-    	String role=credentials.getRole();
+        String role=roleUser();
+
     	model.addAttribute("role", role);
     	if (role.equals(Credentials.ADMIN_ROLE)) {
             model.addAttribute("role", role);

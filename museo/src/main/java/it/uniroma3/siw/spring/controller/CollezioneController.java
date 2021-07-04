@@ -67,8 +67,6 @@ public class CollezioneController {
       if (!bindingResult.hasErrors()) {
     	String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
     	collezione.setPhotos(fileName);
-    	
-    	
     	Collezione savedCollezione =this.collezioneService.inserisci(collezione);
     	
     	String uploadDir = "collezione-photos/" + savedCollezione.getId();
@@ -93,7 +91,25 @@ public class CollezioneController {
     	model.addAttribute("collezione", new Collezione());
     	model.addAttribute("curatori",this.collezioneService.getCuratoreService().tutti());
     	return "collezioneForm.html";
-    }	   
+    }
+    @RequestMapping(value="/admin/collezione/{id}", method= RequestMethod.GET)
+    public String removeCollezione(@PathVariable("id")Long id, Model model) {
+    	logger.debug("inizio eliminazione");
+    		this.collezioneService.deletedCollezione(id);
+    		logger.debug("collezione cancellata");
+    		model.addAttribute("collezioni",this.collezioneService.tutti());
+    		return "collezioni.html";
+		
+    		
+    }
+    @RequestMapping(value="/admin/modCollezione/{id}",method= RequestMethod.GET)
+    public String updateOpera(@PathVariable("id")Long id, Model model) {
+    	logger.debug("UpdateCollezione");
+    	model.addAttribute("collezione", this.collezioneService.collezionePerId(id));
+    	model.addAttribute("curatori",this.collezioneService.getCuratoreService().tutti());
+    	
+        return "collezioneForm.html";
+    }
 
 }
     

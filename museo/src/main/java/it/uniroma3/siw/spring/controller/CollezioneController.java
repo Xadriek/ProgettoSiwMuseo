@@ -117,7 +117,7 @@ public class CollezioneController {
     	model.addAttribute("collezione", this.collezioneService.collezionePerId(id));
     	model.addAttribute("curatori",this.collezioneService.getCuratoreService().tutti());
     	
-        return "collezioneForm.html";
+        return "collezioneFormMod.html";
     }
 
 }

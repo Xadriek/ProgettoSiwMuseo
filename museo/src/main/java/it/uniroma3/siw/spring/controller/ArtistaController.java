@@ -1,7 +1,7 @@
 package it.uniroma3.siw.spring.controller;
 import java.io.IOException;
 
-import javax.websocket.Session;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -104,7 +104,7 @@ public class ArtistaController {
     	model.addAttribute("artista", new Artista());
         return "artistaForm.html";
     }
-    @RequestMapping(value="/modArtista",method= RequestMethod.GET)
+    @RequestMapping(value="/admin/modArtista{id}",method= RequestMethod.GET)
     public String updateArtista(Long id, Model model) {
     	logger.debug("UpdateArtista");
     	model.addAttribute("artista", this.artistaService.artistaPerId(id));

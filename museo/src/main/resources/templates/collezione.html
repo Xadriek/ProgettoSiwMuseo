@@ -15,20 +15,21 @@
       <div class="one_half first"><img class="inspace-15 borderedbox" th:src="@{${collezione.photosImagePath}}" width="120" height="168" alt=""></div> <!-- inserire l'immagine della collezione -->
       <div class="one_half">
       <div class="containerLogin">
- 	<div>
-    	<h6 class="heading" th:text="#{header.collezione}">Collezione</h6>
+ 		<div>
+    		<h6 class="heading" th:text="#{header.collezione}">Collezione</h6>
 	</div>
- <!-- devo capire come inserire la lista############################### -->
+
  
      	<div th:if="${collezione}" th:object="${collezione}">
-			<span th:text="*{nome}">qui-va-nome</span>
+			<h6 class="heading" th:text="*{nome}">qui-va-nome</h6>
+			
 			<span th:text="*{descrizione}">qui-va-descrizione</span>
 			<div th:if="${session.role}=='ADMIN'"> 
 				<a th:href="@{'/admin/collezione' + '/' + ${collezione.id}}"  >modifica</a>
 				<a th:href="@{'/admin/collezione' + '/' + ${collezione.id}}"  >elimina</a>
 			</div>
 			<span>
-<!-- 			<img th:src="@{${collezione.photosImagePath}}"/>  -->
+ <footer class="center"><a class="btn" href="#">More Testimonials</a></footer>
 			</span>	
    		</div>
     	<div th:unless="${collezione}">Non esiste</div>

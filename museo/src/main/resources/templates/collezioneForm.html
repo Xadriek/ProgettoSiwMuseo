@@ -15,11 +15,12 @@
   		<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 		</div>	
 		    
-      <div class="one_half first">
+      <div class="one_half ">
       <div class="containerLogin">
 		<div>
 			<h6 class="heading" th:text="#{header.collezione}">Dati Collezione</h6>
 		</div>
+		<p>
 		<table>
     	<tr>
         <td>
@@ -27,7 +28,7 @@
 			<h6 class="heading"><span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span></h6>
         </td>	
 		<td> 
-			<h6 class="heading"><span>Descrizione:<input type="text" th:field="*{descrizione}" /></span></h6>
+			<h6 class="heading"><span>Descrizione:<textarea  type="text" th:field="*{descrizione}" cols="30" rows="4"/></span></h6>
 			<h6 class="heading"><span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span></h6>
 		</td>
 		</tr>

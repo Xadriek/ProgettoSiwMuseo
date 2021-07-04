@@ -40,6 +40,12 @@
    		</div>
     	<div th:unless="${collezione}">Non esiste</div>
     </div>
+    <div class="boxFox" th:each="opera : ${opere}">
+			<img th:src="@{${opera.photosImagePath}}" width="120" height="168"/>
+			<a href="opera.html" 
+			 th:href="@{'/opera' + '/' + ${opera.id}}" 
+			th:text="|${opera.titolo} ${opera.anno}|">Paolo Rossi</a>
+		</div>
 	  <div>
 	  </div>
     </div>

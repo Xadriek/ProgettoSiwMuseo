@@ -60,7 +60,7 @@ public class OperaController {
 		
     		
     }
-    @RequestMapping(value="/modOpera/{id}",method= RequestMethod.GET)
+    @RequestMapping(value="/admin/modOpera/{id}",method= RequestMethod.GET)
     public String updateOpera(@PathVariable("id")Long id, Model model) {
     	logger.debug("UpdateOpera");
     	model.addAttribute("opera", this.operaService.operaPerId(id));

@@ -2,6 +2,7 @@ package it.uniroma3.siw.spring.model;
 
 
 
+import java.util.List;
 import java.util.Map;
 
 import javax.persistence.CascadeType;
@@ -28,8 +29,8 @@ public @Data class Collezione {
 	@Column(length=299)
 	private String descrizione;
 	
-	@OneToMany(mappedBy="collezione",cascade= {CascadeType.ALL})
-	private Map<Long,Opera> opere;
+	@OneToMany(mappedBy="collezione",cascade = CascadeType.ALL)
+	private List<Opera> opere;
 	
 	@ManyToOne
 	private Curatore curatore;

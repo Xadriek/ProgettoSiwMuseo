@@ -28,7 +28,7 @@ public @Data class Opera {
 	@Column(length=299)
 	private String descrizione;
 	
-	@ManyToOne(cascade =CascadeType.ALL)
+	@ManyToOne
 	private Collezione collezione;
 	
 	@ManyToOne

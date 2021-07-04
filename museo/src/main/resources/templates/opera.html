@@ -12,7 +12,7 @@
 		<div th:if="${opera}" th:object="${opera}">
 			<span th:text="*{titolo}">qui-va-titolo</span> <span th:text="*{anno}">qui-va-anno</span>
 			<div th:if="${session.role}=='ADMIN'"> 
-				<a th:href="@{'/admin/opera' + '/' + ${opera.id}}"  >modifica</a>
+				<a th:href="@{'/admin/modOpera' + '/' + ${opera.id}}"  >modifica</a>
 				<a th:href="@{'/admin/opera' + '/' + ${opera.id}}"  >elimina</a>
 			</div>
 			<span>

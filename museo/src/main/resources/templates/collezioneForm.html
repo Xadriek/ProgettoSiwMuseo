@@ -36,7 +36,7 @@
 			<h6 class="heading"><span>
 			<label>Curatore: </label> 
 			<select id="curatore" th:field="*{curatore}">
-				<option th:each="curatore : ${curatori}" th:value="${curatore.id}" th:text="${curatore.nome}"></option>
+				<option th:each="curatore : ${curatori}" th:value="${curatore.id}" th:text="${curatore.nome + ' ' + curatore.cognome}"></option>
 			</select>
 			</span></h6>
         </td>		

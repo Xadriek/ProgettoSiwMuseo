@@ -12,7 +12,7 @@
 			<span th:text="*{nome}">qui-va-nome</span>
 			<span th:text="*{cognome}">qui-va-cognome</span>
 			<div th:if="${session.role}=='ADMIN'"> 
-				<a th:href="@{'/admin/curatore' + '/' + ${curatore.id}}"  >modifica</a>
+				<a th:href="@{'/admin/modCuratore' + '/' + ${curatore.id}}"  >modifica</a>
 				<a th:href="@{'/admin/curatore' + '/' + ${curatore.id}}"  >elimina</a>
 			</div>
 			<span>
@@ -21,6 +21,15 @@
    		</div>
     	<div th:unless="${curatore}">Non esiste</div>
     </div>
+    <th:block th:each="collezione : ${curatore.collezioni}">
+    
+    <li class="one_third">
+	<a class="imgover" href="collezione.html" th:href="@{'/collezione' + '/' + ${collezione.id}}">
+	
+	<img th:src="@{${collezione.photosImagePath}}" width="120" height="168"/>
+	<figcaption><em th:text="|${collezione.nome} ${collezione.descrizione}|">prova</em></figcaption></a>
+	</li>
+    </th:block>
     <footer th:replace="fragments/baseadmin.html :: fondo"></footer>
 </body>
 </html>

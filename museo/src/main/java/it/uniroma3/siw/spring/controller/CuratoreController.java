@@ -46,12 +46,16 @@ public class CuratoreController {
     public String getCuratore(@PathVariable("id") Long id, Model model) {
     	Curatore curatore=this.curatoreService.curatorePerId(id);
     	model.addAttribute("curatore",curatore );
+    	model.addAttribute("role", this.curatoreService.getCredentialsService().getRoleAuthenticated());
+
     	return "curatore.html";
     }
 
     @RequestMapping(value = "/curatore", method = RequestMethod.GET)
     public String getCuratori(Model model) {
     		model.addAttribute("curatori", this.curatoreService.tutti());
+        	model.addAttribute("role", this.curatoreService.getCredentialsService().getRoleAuthenticated());
+
     		return "curatori.html";
     }
     
@@ -109,6 +113,8 @@ public class CuratoreController {
     		this.curatoreService.deletedCuratore(id);
     		logger.debug("curatore cancellato");
     		model.addAttribute("curatori",this.curatoreService.tutti());
+        	model.addAttribute("role", this.curatoreService.getCredentialsService().getRoleAuthenticated());
+
     		return "curatori.html";
 		
     		

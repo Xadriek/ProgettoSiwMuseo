@@ -1,6 +1,8 @@
 package it.uniroma3.siw.spring.controller;
 import java.io.IOException;
 
+import javax.websocket.Session;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,12 +48,14 @@ public class ArtistaController {
     	Artista artista=this.artistaService.artistaPerId(id);
     	model.addAttribute("artista",artista );
     	model.addAttribute("opere",artista.getOpere() );
+    	model.addAttribute("role", this.artistaService.getCredentialsService().getRoleAuthenticated());
     	return "artista.html";
     }
 
     @RequestMapping(value = "/artista", method = RequestMethod.GET)
     public String getArtisti(Model model) {
     		model.addAttribute("artisti", this.artistaService.tutti());
+    		model.addAttribute("role", this.artistaService.getCredentialsService().getRoleAuthenticated());
     		return "artisti.html";
     }
     
@@ -113,6 +117,8 @@ public class ArtistaController {
     		this.artistaService.deletedArtista(id);
     		logger.debug("artista cancellato");
     		model.addAttribute("artisti",this.artistaService.tutti());
+        	model.addAttribute("role", this.artistaService.getCredentialsService().getRoleAuthenticated());
+
     		return "artisti.html";
 		
     		

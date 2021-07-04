@@ -15,7 +15,10 @@ import it.uniroma3.siw.spring.repository.CuratoreRepository;
 public class CuratoreService {
 	
 	@Autowired
-	private CuratoreRepository curatoreRepository; 
+	private CuratoreRepository curatoreRepository;
+	@Autowired
+	private CredentialsService credentialsService;
+	
 	
 	@Transactional
 	public Curatore inserisci(Curatore curatore) {
@@ -66,5 +69,9 @@ public class CuratoreService {
 			return false;
 		}
 		
+	}
+	@Transactional
+	public CredentialsService getCredentialsService() {
+		return credentialsService;
 	}
 }

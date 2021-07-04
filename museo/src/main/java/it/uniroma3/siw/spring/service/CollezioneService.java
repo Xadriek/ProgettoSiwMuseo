@@ -18,6 +18,9 @@ public class CollezioneService {
 	private CollezioneRepository collezioneRepository; 
 	@Autowired
 	private CuratoreService curatoreService;
+	@Autowired
+	private CredentialsService credentialsService;
+	
 	
 
 	
@@ -69,5 +72,9 @@ public class CollezioneService {
 		
 		this.collezioneRepository.deleteById(id);
 		
+	}
+	@Transactional
+	public CredentialsService getCredentialsService() {
+		return credentialsService;
 	}
 }

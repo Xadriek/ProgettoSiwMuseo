@@ -21,6 +21,9 @@ public class OperaService {
 	private CollezioneService collezioneService;
 	@Autowired
 	private ArtistaService artistaService;
+	@Autowired
+	private CredentialsService credentialsService;
+	
 	
 	@Transactional
 	public Opera inserisci(Opera opera) {
@@ -82,5 +85,9 @@ public class OperaService {
 	public ArtistaService getArtistaService() {
 		
 		return this.artistaService;
+	}
+	@Transactional
+	public CredentialsService getCredentialsService() {
+		return credentialsService;
 	}
 }

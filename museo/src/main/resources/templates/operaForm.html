@@ -56,7 +56,8 @@
 			</span></h6>
         </td>
          <td>
-        	<h6 class="heading"><span></span></h6>
+        				<h6 class="heading"><span>Descrizione:<textarea  type="text" th:field="*{descrizione}" cols="30" rows="4"/></span></h6>
+			<h6 class="heading"><span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span></h6>
         </td>
     	</tr>    		
 	</table>

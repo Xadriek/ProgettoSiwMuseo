@@ -16,6 +16,8 @@ public class ArtistaService {
 	
 	@Autowired
 	private ArtistaRepository artistaRepository; 
+	@Autowired
+	private CredentialsService credentialsService;
 	
 	@Transactional
 	public Artista inserisci(Artista artista) {
@@ -58,6 +60,10 @@ public class ArtistaService {
 			return false;
 		}
 		
+	}
+	@Transactional
+	public CredentialsService getCredentialsService() {
+		return credentialsService;
 	}
 
 }

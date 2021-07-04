@@ -49,6 +49,8 @@ public class OperaController {
     public String getOpera(@PathVariable("id") Long id, Model model) {
     	Opera opera=this.operaService.operaPerId(id);
     	model.addAttribute("opera",opera );
+    	model.addAttribute("role", this.operaService.getCredentialsService().getRoleAuthenticated());
+
 
     	return "opera.html";
     }
@@ -58,6 +60,8 @@ public class OperaController {
     		this.operaService.deletedOpera(id);
     		logger.debug("opera cancellata");
     		model.addAttribute("opere",this.operaService.tutti());
+        	model.addAttribute("role", this.operaService.getCredentialsService().getRoleAuthenticated());
+
     		return "opere.html";
 		
     		
@@ -75,6 +79,8 @@ public class OperaController {
     @RequestMapping(value = "/opera", method = RequestMethod.GET)
     public String getOpere(Model model) {
     		model.addAttribute("opere", this.operaService.tutti());
+        	model.addAttribute("role", this.operaService.getCredentialsService().getRoleAuthenticated());
+
 
     		return "opere.html";
     }

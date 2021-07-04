@@ -32,9 +32,8 @@ public class AuthenticationController {
 	
 	@RequestMapping("role")
 	public String roleUser() {
-		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    	Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-    	String role=credentials.getRole();
+		
+    	String role=credentialsService.getRoleAuthenticated();
     	return role;
 	}
 	

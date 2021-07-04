@@ -25,7 +25,8 @@
 							<h6 class="heading" th:text="#{header.opera}">opera</h6>
 							<div th:if="${opera}" th:object="${opera}">
 								<h6 class="heading" th:text="*{titolo}">qui-va-nome</h6>
-								<p class="nospace" th:text="*{anno}">qui-va-descrizione</p>
+								<p class="nospace" th:text="*{anno}">qui-va-anno</p>
+								<p class="heading" th:text="*{descrizione}">qui-va-descrizione</p>
 							</div>
 							<p class="nospace"></p>
 							<div th:unless="${opera}">Non esiste</div>

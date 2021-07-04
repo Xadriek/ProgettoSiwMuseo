@@ -52,12 +52,16 @@ public class CollezioneController {
     	model.addAttribute("collezione", collezione);
     	model.addAttribute("opere", collezione.getOpere());
     	model.addAttribute("curatore", collezione.getCuratore());
+    	model.addAttribute("role", this.collezioneService.getCredentialsService().getRoleAuthenticated());
+
     	return "collezione.html";
     }
 
     @RequestMapping(value = "/collezione", method = RequestMethod.GET)
     public String getCollezioni(Model model) {
     		model.addAttribute("collezioni", this.collezioneService.tutti());
+        	model.addAttribute("role", this.collezioneService.getCredentialsService().getRoleAuthenticated());
+
     		return "collezioni.html";
     }
     
@@ -101,6 +105,8 @@ public class CollezioneController {
     		this.collezioneService.deletedCollezione(id);
     		logger.debug("collezione cancellata");
     		model.addAttribute("collezioni",this.collezioneService.tutti());
+        	model.addAttribute("role", this.collezioneService.getCredentialsService().getRoleAuthenticated());
+
     		return "collezioni.html";
 		
     		

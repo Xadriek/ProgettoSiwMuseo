@@ -1,53 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments/baseadmin.html :: headerfiles(title='Progetto Museale')"> </head>
+	<head th:replace="fragments/baseadmin.html :: headerfiles(title='Progetto Museale')">
+	 </head>
 
 <body id="top">
 	<header th:replace="fragments/baseadmin.html :: intestazione"></header>
-	<div class="wrapper row3">
- 	<main class="hoc container clear"> 
-    <!-- main body -->
-    <!-- ############################################################################################# -->
-    <section class="group">
-      <div class="one_half first"><img class="inspace-15 borderedbox" src="images/pic01.png" alt=""></div>
-      <div class="one_half">
- 
- <!-- devo capire come inserire la lista############################### -->
 	
-		<div>
-    	<h6 class="heading" th:text="#{header.artisti}">List of artists</h6>
-		<ul>
-			<li th:each="artista : ${artisti}">
-				<a href="artista.html" 
-				   th:href="@{'/artista' + '/' + ${artista.id}}" 
-				   th:text="|${artista.nome} ${artista.cognome}|">Paolo Rossi</a>
-			</li>
-		</ul>
-		</div>
-	<select name="collezione" size="5" multiple="multiple">
-    <option value="1"> collezione1 </option>
-    <option value="2"> collezione2 </option>
-    <option value="3"> collezione3 </option>
-    <option value="4"> collezione4 </option>
-    <option value="5"> collezione5 </option>
-    <option value="6"> collezione6 </option>
-    <option value="1"> collezione1 </option>
-    <option value="2"> collezione2 </option>
-    <option value="3"> collezione3 </option>
-    <option value="4"> collezione4 </option>
-    <option value="5"> collezione5 </option>
-    <option value="6"> collezione6 </option>
-	</select>
-		</div>
-	  <div>
-	  </div>
+	
+<div class="bgded overlay" style="background-image:url('images/backgrounds/01.png');">
+   <figure class="hoc container clear imgroup"> 
+    <!-- ################################################################################################ -->
+    <figcaption class="sectiontitle">
+      <p class="heading underline font-x2" th:text="#{header.artisti}">List of Artist</p>
+    </figcaption>
+    <ul class="nospace group">
     
-    </section>
-    <!-- ############################################################################################# -->
-    <!-- / main body -->
-    <div class="clear"></div>
-  </main>
-</div>
+    <th:block th:each="artista : ${artisti}">
+    
+    <li class="one_third">
+	<a class="imgover" href="artista.html" th:href="@{'/artista' + '/' + ${artista.id}}" >
+	
+	<img th:src="@{${artista.photosImagePath}}" width="120" height="168"/>
+	<figcaption><em th:text="|${artista.nome} ${artista.cognome}|"></em></figcaption></a>
+	</li>
+    </th:block>
+      </ul>
+   
+  </figure> 
+  <!-- ################################################################################################ -->
+  
+</div>	
+
 	<footer th:replace="fragments/baseadmin.html :: fondo"></footer>
 </body>
 </html>
+

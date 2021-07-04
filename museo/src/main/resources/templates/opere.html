@@ -1,40 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments/baseadmin.html :: headerfiles(title='Progetto Museale')"> </head>
+	<head th:replace="fragments/baseadmin.html :: headerfiles(title='Progetto Museale')">
+	 </head>
 
 <body id="top">
 	<header th:replace="fragments/baseadmin.html :: intestazione"></header>
-	<div class="wrapper row3">
- 	<main class="hoc container clear"> 
-    <!-- main body -->
-    <!-- ############################################################################################# -->
-    <section class="group">
-      <div class="one_half first"><img class="inspace-15 borderedbox" src="images/pic01.png" alt=""></div>
-      <div class="one_half">
- 
- <!-- devo capire come inserire la lista############################### -->
 	
-		<div>
-    	<h6 class="heading" th:text="#{header.opere}">Lista di opere</h6>
-		
-		<div class="boxFox" th:each="opera : ${opere}">
-			<img th:src="@{${opera.photosImagePath}}" width="120" height="168"/>
-			<a href="opera.html" 
-			 th:href="@{'/opera' + '/' + ${opera.id}}" 
-			th:text="|${opera.titolo} ${opera.anno}|">Paolo Rossi</a>
-		</div>
-	</div>
-	</div>
-	  <div>
-	  <p th:text="${role}"> . </p>
-	  </div>
+	
+<div class="bgded overlay" style="background-image:url('images/backgrounds/01.png');">
+   <figure class="hoc container clear imgroup"> 
+    <!-- ################################################################################################ -->
+    <figcaption class="sectiontitle">
+      <p class="heading underline font-x2" th:text="#{header.opere}">List of Opere</p>
+    </figcaption>
+    <ul class="nospace group">
     
-    </section>
-    <!-- ############################################################################################# -->
-    <!-- / main body -->
-    <div class="clear"></div>
-  </main>
-</div>
+    <th:block th:each="opera : ${opere}">
+    
+    <li class="one_third">
+	<a class="imgover" href="opera.html" th:href="@{'/opera' + '/' + ${opera.id}}" >
+	
+	<img th:src="@{${opera.photosImagePath}}" width="120" height="168"/>
+	<figcaption><em th:text="|${opera.titolo} ${opera.anno}|">prova</em></figcaption></a>
+	</li>
+    </th:block>
+      </ul>
+   
+  </figure> 
+  <!-- ################################################################################################ -->
+  
+</div>	
+
 	<footer th:replace="fragments/baseadmin.html :: fondo"></footer>
 </body>
 </html>

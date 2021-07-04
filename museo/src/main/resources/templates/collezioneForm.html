@@ -10,82 +10,55 @@
     <!-- main body -->
     <!-- ############################################################################################# -->
     <section class="group">
-  <form th:action="@{/admin/collezione}" method="POST" th:object="${collezione}">
+  	<form th:action="@{/admin/collezione}" method="POST" th:object="${collezione}" enctype="multipart/form-data">
 		<div th:if="${#fields.hasGlobalErrors()}">
   		<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 		</div>	
 		    
-      <div class="one_half first">
+      <div class="one_half ">
       <div class="containerLogin">
 		<div>
 			<h6 class="heading" th:text="#{header.collezione}">Dati Collezione</h6>
 		</div>
-	<table>
+		<p>
+		<table>
     	<tr>
         <td>
-        	<h6 class="heading"><span>Nome:<input type="text" th:field="*{nome}" /></span></h6>
+        	<h6 class="heading"><span>Nome:<input type="text" th:field="*{nome}" required/></span></h6>
 			<h6 class="heading"><span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span></h6>
-        </td>		
-		</tr>
-		<tr>
+        </td>	
 		<td> 
-			<h6 class="heading"><span>Descrizione:<input type="text" th:field="*{descrizione}" /></span></h6>
+			<h6 class="heading"><span>Descrizione:<textarea  type="text" th:field="*{descrizione}" cols="30" rows="4"/></span></h6>
 			<h6 class="heading"><span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span></h6>
 		</td>
 		</tr>
 		<tr>
-	<!--  	<li th:each="curatore : ${curatori}">
-				<a href="curatore.html" 
-				   th:href="@{'/curatore' + '/' + ${curatore.id}}" 
-				   th:text="|${curatore.nome} ${curatore.cognome}|">Paolo Rossi</a>
-			</li>
-		<td>
-		<li th:each="opera : ${opere}">
-				<a href="opera.html" 
-				   th:href="@{'/opera' + '/' + ${opera.id}}" 
-				   th:text="|${opera.titolo} ${opera.anno}|">Paolo Rossi</a> 
-			</li>
-			<h6 class="heading"><span>	
-			<select name="Curatore"  >
-    		<option value="1"> Curatore1 </option>
-    		<option value="2"> Curatore2 </option>
-    		<option value="3"> Curatore3 </option>
-    		<option value="4"> Curatore4 </option>
-    		<option value="5"> Curatore5 </option>
-    		<option value="6"> Curatore6 </option>
-    		<option value="7"> Curatore7 </option>
-    		<option value="8"> Curatore8 </option>
-    		<option value="9"> Curatore9 </option>
-    		<option value="10"> Curatore10 </option>
-    		<option value="11"> Curatore11 </option>
-    		<option value="12"> Curatore12 </option>
+        <td>
+			<h6 class="heading"><span>
+			<label>Curatore: </label> 
+			<select id="curatore" th:field="*{curatore}" >
+				<option th:each="curatore : ${curatori}" th:value="${curatore.id}" th:text="${curatore.nome + ' ' + curatore.cognome}"></option>
 			</select>
-		</span></h6>
-		</td>-->
-		</tr>
+			</span></h6>
+        </td>		
+		<td> 
+        				
+				<h6 class="heading"><span>
+				<label>Foto: </label> <input type="file" name="image" accept="image/png, image/jpeg" />
+				</span></h6>
+        </td>
+		
+		</tr>		
 		</table>
-			<div>
+		<div>
 				<h6 class="heading"><span><button type="submit">Invio</button></span></h6>
-			</div>
+		</div>
 		
 	</div>
-	  <div>
-	  </div>
+	  	<div>
+	  	</div>
       </div>
-      <div class="one_half ">
-           <div class="containerLogin">
-		<div>
-			<h6 class="heading"><span>
-				<label>Curatore: </label> <select id="curatore" th:field="*{curatore}">
-						<option th:each="curatore : ${curatori}"
-										th:value="${curatore.id}" th:text="${curatore.nome}"></option>
-										</select>
-				</span></h6>
-		</div>
 
-      </div>
-      
-      </div>
 	</form>
     </section>
     <!-- ############################################################################################# -->

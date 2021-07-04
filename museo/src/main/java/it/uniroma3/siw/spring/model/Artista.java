@@ -1,11 +1,13 @@
 package it.uniroma3.siw.spring.model;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -44,8 +46,8 @@ public @Data class Artista {
 	@Column(nullable=false)
 	private String descrizione;
 	
-	@OneToMany(mappedBy="artista",cascade= CascadeType.ALL)
-	private Map<Long,Opera> opere;
+	@OneToMany(mappedBy="artista",cascade= {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+	private List<Opera> opere;
 	
 	@Column(nullable = true, length = 64)
     private String photos;

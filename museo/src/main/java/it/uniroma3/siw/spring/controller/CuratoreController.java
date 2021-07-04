@@ -44,13 +44,18 @@ public class CuratoreController {
 
     @RequestMapping(value = "/curatore/{id}", method = RequestMethod.GET)
     public String getCuratore(@PathVariable("id") Long id, Model model) {
-    	model.addAttribute("curatore", this.curatoreService.curatorePerId(id));
+    	Curatore curatore=this.curatoreService.curatorePerId(id);
+    	model.addAttribute("curatore",curatore );
+    	model.addAttribute("role", this.curatoreService.getCredentialsService().getRoleAuthenticated());
+
     	return "curatore.html";
     }
 
     @RequestMapping(value = "/curatore", method = RequestMethod.GET)
     public String getCuratori(Model model) {
     		model.addAttribute("curatori", this.curatoreService.tutti());
+        	model.addAttribute("role", this.curatoreService.getCredentialsService().getRoleAuthenticated());
+
     		return "curatori.html";
     }
     
@@ -94,5 +99,24 @@ public class CuratoreController {
     	logger.debug("addCuratoreFailed");
     	model.addAttribute("curatore", new Curatore());
         return "curatoreForm.html";
+    }
+    @RequestMapping(value="/admin/modCuratore/{id}",method= RequestMethod.GET)
+    public String updateCuratore(@PathVariable("id")Long id, Model model) {
+    	logger.debug("UpdateCuratore");
+    	model.addAttribute("curatore", this.curatoreService.curatorePerId(id));
+
+        return "curatoreFormMod.html";
+    }
+    @RequestMapping(value="/admin/curatore/{id}", method= RequestMethod.GET)
+    public String removeCuratore(@PathVariable("id")Long id, Model model) {
+    	logger.debug("inizio eliminazione");
+    		this.curatoreService.deletedCuratore(id);
+    		logger.debug("curatore cancellato");
+    		model.addAttribute("curatori",this.curatoreService.tutti());
+        	model.addAttribute("role", this.curatoreService.getCredentialsService().getRoleAuthenticated());
+
+    		return "curatori.html";
+		
+    		
     }
 }

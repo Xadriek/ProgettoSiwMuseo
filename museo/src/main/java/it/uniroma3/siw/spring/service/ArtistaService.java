@@ -16,6 +16,8 @@ public class ArtistaService {
 	
 	@Autowired
 	private ArtistaRepository artistaRepository; 
+	@Autowired
+	private CredentialsService credentialsService;
 	
 	@Transactional
 	public Artista inserisci(Artista artista) {
@@ -48,6 +50,20 @@ public class ArtistaService {
 			return true;
 		else 
 			return false;
+	}
+	@Transactional
+	public boolean deletedArtista(Long id) {
+		try {
+			this.artistaRepository.deleteById(id);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+		
+	}
+	@Transactional
+	public CredentialsService getCredentialsService() {
+		return credentialsService;
 	}
 
 }

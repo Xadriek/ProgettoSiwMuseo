@@ -2,6 +2,7 @@ package it.uniroma3.siw.spring.model;
 
 
 
+import java.util.List;
 import java.util.Map;
 
 import javax.persistence.CascadeType;
@@ -12,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import lombok.Data;
 
@@ -27,10 +29,20 @@ public @Data class Collezione {
 	@Column(length=299)
 	private String descrizione;
 	
-	@OneToMany(mappedBy="collezione",cascade= {CascadeType.ALL})
-	private Map<Long,Opera> opere;
+	@OneToMany(mappedBy="collezione",cascade = CascadeType.ALL)
+	private List<Opera> opere;
 	
 	@ManyToOne
 	private Curatore curatore;
+	
+	@Column(nullable = true, length = 64)
+    private String photos;
+	
+	@Transient
+    public String getPhotosImagePath() {
+        if (this.getPhotos() == null || this.getId() == null) return null;
+         
+        return "/"+"collezione-photos" + "/"+ id + "/" + photos;
+    }
 
 }

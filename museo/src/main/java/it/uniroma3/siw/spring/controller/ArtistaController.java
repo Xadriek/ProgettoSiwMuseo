@@ -1,6 +1,8 @@
 package it.uniroma3.siw.spring.controller;
 import java.io.IOException;
 
+
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,13 +45,17 @@ public class ArtistaController {
 
     @RequestMapping(value = "/artista/{id}", method = RequestMethod.GET)
     public String getArtista(@PathVariable("id") Long id, Model model) {
-    	model.addAttribute("artista", this.artistaService.artistaPerId(id));
+    	Artista artista=this.artistaService.artistaPerId(id);
+    	model.addAttribute("artista",artista );
+    	model.addAttribute("opere",artista.getOpere() );
+    	model.addAttribute("role", this.artistaService.getCredentialsService().getRoleAuthenticated());
     	return "artista.html";
     }
 
     @RequestMapping(value = "/artista", method = RequestMethod.GET)
     public String getArtisti(Model model) {
     		model.addAttribute("artisti", this.artistaService.tutti());
+    		model.addAttribute("role", this.artistaService.getCredentialsService().getRoleAuthenticated());
     		return "artisti.html";
     }
     
@@ -97,5 +103,24 @@ public class ArtistaController {
     	logger.debug("addArtista2");
     	model.addAttribute("artista", new Artista());
         return "artistaForm.html";
+    }
+    @RequestMapping(value="/admin/modArtista{id}",method= RequestMethod.GET)
+    public String updateArtista(Long id, Model model) {
+    	logger.debug("UpdateArtista");
+    	model.addAttribute("artista", this.artistaService.artistaPerId(id));
+
+        return "artistaForm.html";
+    }
+    @RequestMapping(value="/admin/artista/{id}", method= RequestMethod.GET)
+    public String removeArtista(@PathVariable("id")Long id, Model model) {
+    	logger.debug("inizio eliminazione");
+    		this.artistaService.deletedArtista(id);
+    		logger.debug("artista cancellato");
+    		model.addAttribute("artisti",this.artistaService.tutti());
+        	model.addAttribute("role", this.artistaService.getCredentialsService().getRoleAuthenticated());
+
+    		return "artisti.html";
+		
+    		
     }
 }

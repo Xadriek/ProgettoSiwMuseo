@@ -4,24 +4,41 @@
 	
 <body id="top">
 	<header th:replace="fragments/baseadmin.html :: intestazione"></header>
-	
-    <div>
-    	<h6 class="heading" th:text="#{header.opera}">Opera</h6>
 
-			
-		<div th:if="${opera}" th:object="${opera}">
-			<span th:text="*{titolo}">qui-va-titolo</span> <span th:text="*{anno}">qui-va-anno</span>
-			<div th:if="${session.role}=='ADMIN'"> 
-			<!-- 	<a th:href="@{'/admin/modOpera' + '/' + ${opera.id}}"  >modifica</a> -->
-				<a th:href="@{'/admin/opera' + '/' + ${opera.id}}"  >elimina</a>
-			</div>
-			<span>
-			<img th:src="@{${opera.photosImagePath}}"/>
-			</span>	
-		</div>
-		
-		<div th:unless="${opera}">Non esiste</div>
+	<div class="wrapper row3">
+		<main class="hoc container clear">
+			<!-- main body -->
+			<!-- ############################################################################################# -->
+			<section class="group">
+				<div class="one_half first">
+					<img class="inspace-15 borderedbox" th:src="@{${opera.photosImagePath}}" width="120" height="168" 	alt="">
+				</div>
+				<div class="one_half">
+				<ul class="nospace group inspace-15">
+					<li class="one_half first btmspace-50">
+						<article>
+							<h6 class="heading" th:text="#{header.opera}">opera</h6>
+							<div th:if="${opera}" th:object="${opera}">
+								<h6 class="heading" th:text="*{titolo}">qui-va-nome</h6>
+								<p class="nospace" th:text="*{anno}">qui-va-descrizione</p>
+							</div>
+							<p class="nospace"></p>
+							<div th:unless="${opera}">Non esiste</div>
+							<div th:if="${session.role}=='ADMIN'">
+								<footer class="center">
+								<a class="btn" th:href="@{'/admin/modOpera' + '/' + ${opera.id}}">modifica</a>
+								<a class="btn" th:href="@{'/admin/opera' + '/' + ${opera.id}}">elimina</a>
+								</footer>
+							</div>
+						</article>
+          			</li>
+        	</ul>
+      </div>					
+ 	</section>
+    <!-- ############################################################################################# -->
+    <!-- / main body -->
+    <div class="clear"></div>
+  	</main>
 	</div>
-    <footer th:replace="fragments/baseadmin.html :: fondo"></footer>
 </body>
 </html>

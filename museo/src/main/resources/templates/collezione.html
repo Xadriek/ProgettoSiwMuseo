@@ -14,55 +14,41 @@
 			<!-- main body -->
 			<!-- ############################################################################################# -->
 			<section class="group">
-				+
 				<div class="one_half first">
-					<img class="inspace-15 borderedbox"
-						th:src="@{${collezione.photosImagePath}}" width="120" height="168"
-						alt="">
+					<img class="inspace-15 borderedbox" th:src="@{${collezione.photosImagePath}}" width="120" height="168" 	alt="">
 				</div>
+				<div class="one_half">
 				<ul class="nospace group inspace-15">
 					<li class="one_half first btmspace-50">
 						<article>
 							<h6 class="heading" th:text="#{header.collezione}">Collezione</h6>
-
-
-
 							<div th:if="${collezione}" th:object="${collezione}">
 								<h6 class="heading" th:text="*{nome}">qui-va-nome</h6>
 								<p class="nospace" th:text="*{descrizione}">qui-va-descrizione</p>
 							</div>
-
-
+							<p class="nospace"></p>
+							<div th:unless="${collezione}">Non esiste</div>
 							<div th:if="${session.role}=='ADMIN'">
 								<footer class="center">
-									<a class="btn"
-										th:href="@{'/admin/collezione' + '/' + ${collezione.id}}">modifica</a>
-									<a class="btn"
-										th:href="@{'/admin/collezione' + '/' + ${collezione.id}}">elimina</a>
+								<a class="btn" th:href="@{'/admin/collezione' + '/' + ${collezione.id}}">modifica</a>
+								<a class="btn" th:href="@{'/admin/collezione' + '/' + ${collezione.id}}">elimina</a>
 								</footer>
 							</div>
 						</article>
-					</li>
-				</ul>
-	</div>
-	</div>
-	<div th:unless="${collezione}">Non esiste</div>
-	</div>
-	
-	<div></div>
-	</div>
-	</section>
-	<!-- ############################################################################################# -->
-	<!-- / main body -->
-	<div class="clear"></div>
-	</main>
+          			</li>
+        	</ul>
+      </div>					
+ 	</section>
+    <!-- ############################################################################################# -->
+    <!-- / main body -->
+    <div class="clear"></div>
+  	</main>
 	</div>
 	
 	<!-- Gallery Photo ################################################################################### -->
 
 	<section class="group">
-		<div class="bgded overlay"
-			style="background-image: url('images/backgrounds/01.png');">
+		<div class="bgded overlay" style="background-image: url('images/backgrounds/01.png');">
 			<figure class="hoc container clear imgroup">
 				<!-- ################################################################################################ -->
 				<figcaption class="sectiontitle">
@@ -73,19 +59,10 @@
 					<a href="opera.html" th:href="@{'/opera' + '/' + ${opera.id}}"
 						th:text="|${opera.titolo} ${opera.anno}|">Paolo Rossi</a>
 				</div>
-		</div>
-		<div th:unless="${collezione}">Non esiste</div>
-
-
-
-
-
-
-
-
-
-
-
+	 	</figure>
+	 	</div>
+    <!-- ################################################################################################ -->
+  </section>	
 		<footer th:replace="fragments/baseadmin.html :: fondo"></footer>
 </body>
 </html>

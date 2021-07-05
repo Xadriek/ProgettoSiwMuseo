@@ -1,61 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>Progetto Museale | Contattaci</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
-<style type="text/css"></style>
-</head>
+	<head th:replace="fragments/base.html :: headerfiles(title='Progetto Museale')">
+	 </head>
+
 <body id="top">
-
-<div class="bgded" style="background-image:url('images/backgrounds/01.png');">
-
-<header id="header" class="hoc clear">
-<div class="wrapper row0">
-  <div id="topbar" class="hoc clear">
-    <div class="fl_left"> 
-      <!-- ################################################################################################ -->
-      <ul class="nospace">
-        <li><i class="fas fa-phone rgtspace-5"></i> +00 (123) 456 7890</li>
-        <li><i class="far fa-envelope rgtspace-5"></i>  info@museo.com</li>
-      </ul>
-      <!-- ################################################################################################ -->
-    </div>
- <div class="fl_right"> 
-      <ul class="nospace">
-        <li><a th:href="@{/login}" ><i class="fas fa-sign-in-alt">Login</i></a></li>
-        <li><a th:href="@{/register}" ><i class="fas fa-edit">Registrazione</i></a></li>
-      </ul>
-      
-    </div>
-  </div>
-</div>
-
-
-
-<div class="bgded" style="background-image:url('../images/backgrounds/01.png');"> 
-  
-  <div class="wrapper row1">
-    
-      <div id="logo" class="fl_left"> 
-        
-        <h1><a href=#>Portale Museale</a></h1>
-       
-      </div>
-      <nav id="mainav" class="fl_right"> 
-        
-        <ul class="clear">
-          <li class="active"><a href="/default">Home</a></li>
-           <li><a th:href="@{/chiSiamo}">Chi Siamo</a></li>
-          <li><a th:href="@{/contattaci}">Contattaci</a></li>
-        </ul>
-       
-      </nav>
-    
-  </div>
-  
-</header>  	  
+		<div th:if="${role}=='ADMIN'">
+		<header th:replace="fragments/baseadmin.html :: intestazione"></header>
+	</div>
+	<div th:unless="${role}=='ADMIN'">
+		<header th:replace="fragments/base.html :: intestazione"></header>
+	</div>
+	
+ 
 <!-- Pagina Centrale ################################################################################# -->  	
 
 <div class="wrapper row3">
@@ -87,33 +43,8 @@
   </main>
 </div>
 
-</div>
-<!-- footer       #################################################################################### -->  
 
-<div class="bgded overlay row4" style="background-image:url('images/backgrounds/01.png');">
-  <footer  id="footer" class="hoc clear"> 
- <div class="wrapper coloured">
-  <section id="ctdetails" class="hoc clear"> 
-    <!-- ############################################################################################## -->
-    <ul class="nospace clear">
-      <li class="one_quarter first">
-        <div class="block clear"><a href="#"><i class="fas fa-phone"></i></a> <span><strong>Contattaci:</strong> +00 (123) 456 7890</span></div>
-      </li>
-      <li class="one_quarter">
-        <div class="block clear"><a href="#"><i class="fas fa-envelope"></i></a> <span><strong>Manda una email:</strong> support@museo.com</span></div>
-      </li>
-      <li class="one_quarter">
-        <div class="block clear"><a href="#"><i class="fas fa-clock"></i></a> <span><strong> Lunedi - Sabato:</strong> 08.00am - 18.00pm</span></div>
-      </li>
-      <li class="one_quarter">
-        <div class="block clear"><a href="https://goo.gl/maps/m5fg47TcDCkNfZEJ8" target="_blank"><i class="fas fa-map-marker-alt"></i></a> <span><strong>Dove Trovarci</strong><a href="https://goo.gl/maps/m5fg47TcDCkNfZEJ8" target="_blank">Indirizzo</a></span></div>
-      </li>
-    </ul>
-    <!-- ################################################################################################ -->
-  </section>
-</div>
-  </footer>
-</div>
+		<footer th:replace="fragments/base.html :: fondo"></footer>
 
 </body>
 </html>

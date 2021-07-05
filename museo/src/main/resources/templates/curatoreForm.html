@@ -59,7 +59,8 @@
 			<h6 class="heading"><span th:if="${#fields.hasErrors('matricola')}" th:errors="*{matricola}"></span></h6>
     	</td>
         <td>
-  			<h6 class="heading"><span></span></h6>      
+  			<h6 class="heading"><span>Foto:<input type="file" name="image" accept="image/png, image/jpeg" />
+				</span></h6>    
         </td>
         <td>
 			<h6 class="heading"><span></span></h6>
@@ -67,8 +68,7 @@
      	</tr>    		
 		</table>
 	<div>
-	<h6 class="heading"><span><label>Foto: </label> <input type="file" name="image" accept="image/png, image/jpeg" />
-				</span></h6>
+	
 
 			<div>
 				<span><button type="submit">Invio</button></span>

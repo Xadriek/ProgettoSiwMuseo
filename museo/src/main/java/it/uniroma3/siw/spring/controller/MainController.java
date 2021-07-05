@@ -13,5 +13,12 @@ public class MainController {
 	public String index(Model model) {
 			return "index";
 	}
-	
+	@RequestMapping(value = {"/chiSiamo"}, method = RequestMethod.GET)
+	public String chiSiamo(Model model) {
+			return "chisiamo";
+	}
+	@RequestMapping(value = {"/contattaci"}, method = RequestMethod.GET)
+	public String contattaci(Model model) {
+			return "contattaci";
+	}
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Progetto Museale | Contattaci</title>
 <meta charset="utf-8">
@@ -24,8 +24,8 @@
     </div>
  <div class="fl_right"> 
       <ul class="nospace">
-        <li><a href="../login.html" ><i class="fas fa-sign-in-alt">Login</i></a></li>
-        <li><a href="../register.html" ><i class="fas fa-edit">Registrazione</i></a></li>
+        <li><a th:href="@{/login}" ><i class="fas fa-sign-in-alt">Login</i></a></li>
+        <li><a th:href="@{/register}" ><i class="fas fa-edit">Registrazione</i></a></li>
       </ul>
       
     </div>
@@ -40,15 +40,15 @@
     
       <div id="logo" class="fl_left"> 
         
-        <h1><a href="index.html">Portale Museale</a></h1>
+        <h1><a href=#>Portale Museale</a></h1>
        
       </div>
       <nav id="mainav" class="fl_right"> 
         
         <ul class="clear">
           <li class="active"><a href="/default">Home</a></li>
-          <li><a href="chisiamo.html">Chi Siamo</a></li>
-          <li><a href="contattaci.html">Contattaci</a></li>
+          <li><a th:href="@{/chiSiamo}">Chi Siamo</a></li>
+          <li><a th:href="@{/contattaci}">Contattaci</a></li>
         </ul>
        
       </nav>
@@ -63,31 +63,52 @@
     <!-- main body -->
     <!-- ################################################################################################ -->
     <div class="content"> 
-      <div id="comments">
+      <div class="containerLogin">
         
         <h2>Invia una email </h2>
+       
         <form action="mailto:info@museo.com" method="post" enctype="text/plain">
+         <table>
+         <tr>
+         <td>
           <div class="one_third first">
             <label for="name">Nome:<span>*</span></label>
             <input type="text" name="name" id="name" value="" size="22" required>
           </div>
+          </td>
+          <td>
           <div class="one_third">
             <label for="email">Mail <span>*</span></label>
             <input type="email" name="email" id="email" value="" size="22" required>
           </div>
+          </td>
+          </tr>
+          <tr>
+          <td>
            <div class="one_third">
             <label for="subject">Oggetto del messaggio: <span>*</span></label>
             <input type="text" name="subject"  value="" size="22" required>
-          </div>         
+          </div>  
+          </td>   
+          <td>   
           <div class="block clear">
             <label for="body">Testo</label>
-            <textarea name="body" id="comment" cols="25" rows="10"></textarea>
+            <textarea name="body" id="comment" cols="20" rows="5"></textarea>
           </div>
+          </td>
+          <tr>
+          <td>
           <div>
             <input type="submit" name="submit" value="Ivia Email">
-            &nbsp;
+           </div>
+           </td>
+           <td>
+           <div>
             <input type="reset" name="reset" value="Cancella Form">
           </div>
+          </td>
+          </tr>
+          </table>
         </form>
       </div>
       <!-- ################################################################################################ -->

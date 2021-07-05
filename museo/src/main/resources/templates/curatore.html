@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments/baseadmin.html :: headerfiles(title=#{pageTitle.artista})"> </head>
+	<head th:replace="fragments/baseadmin.html :: headerfiles(title=#{pageTitle.curatore})"> </head>
 	
 <body id="top">
 	<div th:if="${role}=='ADMIN'">
@@ -24,8 +24,24 @@
 						<article>
 							<h6 class="heading" th:text="#{header.curatoreSingolo}">Curatore</h6>
 							<div th:if="${curatore}" th:object="${curatore}">
+							<h5 class="heading" >NOME:</h5>
 								<h6 class="heading" th:text="*{nome}">qui-va-nome</h6>
+								<h5 class="heading" >COGNOME:</h5>
 								<h6 class="heading" th:text="*{cognome}">qui-va-cognome</h6>
+								<h5 class="heading" >DATA DI NASCITA:</h5>
+								<h6 class="heading" th:text="*{dataDiNascita}">qui-va-dataNascita</h6>
+								<h5 class="heading" >LUOGO DI NASCITA:</h5>
+								<h6 class="heading" th:text="*{luogoNascita}">qui-va-luogoNascita</h6>
+								<h5 class="heading" >EMAIL:</h5>
+								<h6 class="heading" th:text="*{email}">qui-va-email</h6>
+
+								<div th:if="${session.role}=='ADMIN'">
+								<h5 class="heading" >TELEFONO:</h5>
+								<h6 class="heading" th:text="*{telefono}">qui-va-telefono</h6>
+								<h5 class="heading" >MATRICOLA:</h5>
+								<h6 class="heading" th:text="*{matricola}">qui-va-matricola</h6>
+								
+							</div>
 							</div>
 							<p class="nospace"></p>
 							<div th:unless="${curatore}">Non esiste</div>

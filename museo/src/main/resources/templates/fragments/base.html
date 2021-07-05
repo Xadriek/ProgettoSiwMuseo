@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	
 	<link th:href="@{/layout/styles/layout.css}" rel="stylesheet">
-	<link rel="shortcut icon" href="/images/favicon.ico" />
+	<link rel="shortcut icon" href="images/favicon.ico" />
 	<title th:text="${title}"></title>
 </head>
 
@@ -58,8 +58,8 @@
         
         <ul class="clear">
           <li class="active"><a th:href="@{/default}">Home</a></li>
-          <li><a href="pages/chisiamo.html">Chi Siamo</a></li>
-          <li><a href="pages/contattaci.html">Contattaci</a></li>
+           <li><a th:href="@{/chiSiamo}">Chi Siamo</a></li>
+          <li><a th:href="@{/contattaci}">Contattaci</a></li>
           
         </ul>
        
@@ -87,13 +87,13 @@
     		<!-- ############################################################################################## -->
     			<ul class="nospace clear">
       			<li class="one_quarter first">
-        			<div class="block clear"><a href="#"><i class="fas fa-phone"></i></a> <span><strong>Contattaci:</strong> +00 (123) 456 7890</span></div>
+        			<div class="block clear"><a href="tel:001-234-567-890"><i class="fas fa-phone"></i></a> <span><strong>Contattaci:</strong> +00 (123) 456 7890</span></div>
       			</li>
       			<li class="one_quarter">
-        			<div class="block clear"><a href="#"><i class="fas fa-envelope"></i></a> <span><strong>Manda una email:</strong> support@museo.com</span></div>
+        			<div class="block clear"><a href="pages/contattaci.html"><i class="fas fa-envelope"></i></a> <span><strong>Manda una email:</strong> support@museo.com</span></div>
       			</li>
       			<li class="one_quarter">
-        			<div class="block clear"><a href="#"><i class="fas fa-clock"></i></a> <span><strong> Lunedi - Sabato:</strong> 08.00am - 18.00pm</span></div>
+        			<div class="block clear"><i class="fas fa-clock"></i> <span><strong> Lunedi - Sabato:</strong> 08.00am - 18.00pm</span></div>
       			</li>
       			<li class="one_quarter">
         		<div class="block clear"><a href="https://goo.gl/maps/m5fg47TcDCkNfZEJ8" target="_blank"><i class="fas fa-map-marker-alt"></i></a> <span><strong>Dove Trovarci</strong><a href="https://goo.gl/maps/m5fg47TcDCkNfZEJ8" target="_blank">Indirizzo</a></span></div>

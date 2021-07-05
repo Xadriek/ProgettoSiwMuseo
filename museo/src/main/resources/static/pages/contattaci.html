@@ -63,31 +63,52 @@
     <!-- main body -->
     <!-- ################################################################################################ -->
     <div class="content"> 
-      <div id="pageintro">
+      <div class="containerLogin">
         
         <h2>Invia una email </h2>
+       
         <form action="mailto:info@museo.com" method="post" enctype="text/plain">
+         <table>
+         <tr>
+         <td>
           <div class="one_third first">
             <label for="name">Nome:<span>*</span></label>
             <input type="text" name="name" id="name" value="" size="22" required>
           </div>
+          </td>
+          <td>
           <div class="one_third">
             <label for="email">Mail <span>*</span></label>
             <input type="email" name="email" id="email" value="" size="22" required>
           </div>
+          </td>
+          </tr>
+          <tr>
+          <td>
            <div class="one_third">
             <label for="subject">Oggetto del messaggio: <span>*</span></label>
             <input type="text" name="subject"  value="" size="22" required>
-          </div>         
+          </div>  
+          </td>   
+          <td>   
           <div class="block clear">
             <label for="body">Testo</label>
-            <textarea name="body" id="comment" cols="25" rows="10"></textarea>
+            <textarea name="body" id="comment" cols="20" rows="5"></textarea>
           </div>
+          </td>
+          <tr>
+          <td>
           <div>
             <input type="submit" name="submit" value="Ivia Email">
-            &nbsp;
+           </div>
+           </td>
+           <td>
+           <div>
             <input type="reset" name="reset" value="Cancella Form">
           </div>
+          </td>
+          </tr>
+          </table>
         </form>
       </div>
       <!-- ################################################################################################ -->

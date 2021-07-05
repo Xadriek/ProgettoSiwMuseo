@@ -50,8 +50,6 @@ public class OperaController {
     	Opera opera=this.operaService.operaPerId(id);
     	model.addAttribute("opera",opera );
     	model.addAttribute("role", this.operaService.getCredentialsService().getRoleAuthenticated());
-
-
     	return "opera.html";
     }
     @RequestMapping(value="/admin/operaRemove/{id}", method= RequestMethod.GET)

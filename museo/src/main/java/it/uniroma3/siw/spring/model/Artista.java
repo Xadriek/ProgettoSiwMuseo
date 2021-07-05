@@ -1,5 +1,6 @@
 package it.uniroma3.siw.spring.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -30,9 +31,9 @@ public @Data class Artista {
 	private String cognome;
 	
 	@Column(nullable=false)
-	private Date dataDiNascita;
+	private LocalDate dataDiNascita;
 	@Column(nullable=true)
-	private Date dataDiMorte;
+	private LocalDate dataDiMorte;
 	
 
 	@Column(nullable=false)

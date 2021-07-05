@@ -52,7 +52,7 @@ public class OperaController {
     	model.addAttribute("role", this.operaService.getCredentialsService().getRoleAuthenticated());
     	return "opera.html";
     }
-    @RequestMapping(value="/admin/operaRemove/{id}", method= RequestMethod.GET)
+    @RequestMapping(value="/admin/opera/{id}", method= RequestMethod.GET)
     public String removeOpera(@PathVariable("id")Long id, Model model) {
     	logger.debug("inizio eliminazione");
     		this.operaService.deletedOpera(id);

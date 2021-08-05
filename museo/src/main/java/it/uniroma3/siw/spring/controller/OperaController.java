@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
 
 import it.uniroma3.siw.spring.controller.validator.OperaValidator;
+import it.uniroma3.siw.spring.model.Artista;
 import it.uniroma3.siw.spring.model.Opera;
 import it.uniroma3.siw.spring.service.OperaService;
 import it.uniroma3.siw.upload.FileUploadUtil;
@@ -120,6 +121,22 @@ public class OperaController {
     		
     		return "uploadSuccessful.html";
     }
-   
+    
+    @RequestMapping(value ="/admin/operaUpdate")
+    public RedirectView updateOpera(@ModelAttribute("opera") Opera opera,
+    		@RequestParam("image") MultipartFile multipartFile,
+    		Model model, BindingResult bindingResult) throws IOException {
+    	
+    	String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+    	opera.setPhotos(fileName);
+    	
+    	Opera savedOpera =this.operaService.inserisci(opera);
+    	
+    	String uploadDir = "opera-photos/" + savedOpera.getId();
+    	
+    	FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+    	
+    	return new RedirectView("opere");
+    }
 
 }

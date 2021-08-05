@@ -37,12 +37,28 @@ public @Data class Opera {
 	@Column(nullable = true, length = 64)
     private String photos;
 	
+	public Opera(Long id, String titolo, Long anno, String descrizione, Collezione collezione, Artista artista,
+			String photos) {
+		super();
+		this.id = id;
+		this.titolo = titolo;
+		this.anno = anno;
+		this.descrizione = descrizione;
+		this.collezione = collezione;
+		this.artista = artista;
+		this.photos = photos;
+	}
+	
+	public Opera() {
+		super();
+	}
 	@Transient
     public String getPhotosImagePath() {
         if (this.getPhotos() == null || this.getId() == null) return null;
          
         return "/"+"opera-photos" + "/"+ id + "/" + photos;
     }
+
 
 	
 }

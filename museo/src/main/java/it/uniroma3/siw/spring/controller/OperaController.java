@@ -71,7 +71,7 @@ public class OperaController {
     	model.addAttribute("collezioni",this.operaService.getCollezioneService().tutti());
     	model.addAttribute("artisti",this.operaService.getArtistaService().tutti());
 
-        return "operaForm.html";
+        return "operaFormMod.html";
     }
 
     @RequestMapping(value = "/opera", method = RequestMethod.GET)
@@ -120,12 +120,6 @@ public class OperaController {
     		
     		return "uploadSuccessful.html";
     }
-    @RequestMapping(value="/admin/operaForm", method = RequestMethod.GET)
-    public String addOpera2(Model model) {
-    	logger.debug("addOpera");
-    	model.addAttribute("opera", new Opera());
-    	model.addAttribute("collezioni",this.operaService.getCollezioneService().tutti());
-        return "operaForm.html";
-    }
+   
 
 }

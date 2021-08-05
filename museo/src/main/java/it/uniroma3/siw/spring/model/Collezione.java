@@ -3,7 +3,6 @@ package it.uniroma3.siw.spring.model;
 
 
 import java.util.List;
-import java.util.Map;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -38,11 +37,38 @@ public @Data class Collezione {
 	@Column(nullable = true, length = 64)
     private String photos;
 	
+	
+	public Collezione(Long id, String nome, String descrizione, List<Opera> opere, Curatore curatore, String photos) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.descrizione = descrizione;
+		this.opere = opere;
+		this.curatore = curatore;
+		this.photos = photos;
+	}
+	public Collezione() {
+		super();
+	}
+	
 	@Transient
     public String getPhotosImagePath() {
         if (this.getPhotos() == null || this.getId() == null) return null;
          
         return "/"+"collezione-photos" + "/"+ id + "/" + photos;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

@@ -10,7 +10,7 @@
     <!-- main body -->
     <!-- ############################################################################################# -->
     <section class="group">
-  	<form th:action="@{/admin/collezione}" method="POST" th:object="${collezione}" enctype="multipart/form-data">
+  	<form th:action="@{collezione}" method="POST" th:object="${collezione}" enctype="multipart/form-data">
 		<div th:if="${#fields.hasGlobalErrors()}">
   		<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 		</div>	

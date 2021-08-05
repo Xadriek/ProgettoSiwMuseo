@@ -85,7 +85,24 @@ public class CollezioneController {
       return new RedirectView("collezioneForm");
     }
 
-        
+    @RequestMapping(value ="/admin/collezioneUpdate")
+    public RedirectView updateCollezione(@ModelAttribute("collezione") Collezione collezione,
+    		@RequestParam("image") MultipartFile multipartFile,
+    		Model model, BindingResult bindingResult) throws IOException {
+    	
+    	String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+    	collezione.setPhotos(fileName);
+    	
+    	Collezione savedCollezione =this.collezioneService.inserisci(collezione);
+    	
+    	String uploadDir = "curatore-photos/" + savedCollezione.getId();
+    	
+    	FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+    	
+    	return new RedirectView("collezioni");
+    	
+
+}    
     @RequestMapping(value = "/admin/collezioni", method = RequestMethod.GET)
     public String getCollezioni2(Model model) {
 		
@@ -114,9 +131,10 @@ public class CollezioneController {
     @RequestMapping(value="/admin/modCollezione/{id}",method= RequestMethod.GET)
     public String updateOpera(@PathVariable("id")Long id, Model model) {
     	logger.debug("UpdateCollezione");
-    	model.addAttribute("collezione", this.collezioneService.collezionePerId(id));
     	model.addAttribute("curatori",this.collezioneService.getCuratoreService().tutti());
-    	
+    	model.addAttribute("role", this.collezioneService.getCredentialsService().getRoleAuthenticated());
+    	model.addAttribute("collezione", this.collezioneService.collezionePerId(id));
+
         return "collezioneFormMod.html";
     }
 

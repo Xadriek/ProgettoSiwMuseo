@@ -21,7 +21,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import it.uniroma3.siw.spring.controller.validator.ArtistaValidator;
 import it.uniroma3.siw.spring.model.Artista;
-import it.uniroma3.siw.spring.model.Curatore;
+
 import it.uniroma3.siw.spring.service.ArtistaService;
 import it.uniroma3.siw.upload.FileUploadUtil;
 

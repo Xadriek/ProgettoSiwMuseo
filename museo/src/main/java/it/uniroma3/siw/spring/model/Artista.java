@@ -53,14 +53,38 @@ public @Data class Artista {
 	@Column(nullable = true, length = 64)
     private String photos;
 	
-	@Transient
-    public String getPhotosImagePath() {
-        if (this.getPhotos() == null || this.getId() == null) return null;
-         
-        return "/"+"artista-photos" + "/"+ id + "/" + photos;
-    }
+
+
+	public Artista(Long id, String nome, String cognome, LocalDate dataDiNascita, LocalDate dataDiMorte,
+			String luogoNascita, String luogoMorte, String nazionalita, String descrizione, List<Opera> opere,
+			String photos) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.dataDiNascita = dataDiNascita;
+		this.dataDiMorte = dataDiMorte;
+		this.luogoNascita = luogoNascita;
+		this.luogoMorte = luogoMorte;
+		this.nazionalita = nazionalita;
+		this.descrizione = descrizione;
+		this.opere = opere;
+		this.photos = photos;
+	}
 	
 
 
+	@Transient
+	public String getPhotosImagePath() {
+		if (this.getPhotos() == null || this.getId() == null) return null;
+		
+		return "/"+"artista-photos" + "/"+ id + "/" + photos;
+	}
+
+
+
+	public Artista() {
+		super();
+	}
 	
 }

@@ -21,6 +21,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import it.uniroma3.siw.spring.controller.validator.ArtistaValidator;
 import it.uniroma3.siw.spring.model.Artista;
+import it.uniroma3.siw.spring.model.Curatore;
 import it.uniroma3.siw.spring.service.ArtistaService;
 import it.uniroma3.siw.upload.FileUploadUtil;
 
@@ -92,7 +93,27 @@ public class ArtistaController {
     	return new RedirectView("artisti");
     	}
       return new RedirectView("artistaForm");
+      
+     
 }
+    
+    @RequestMapping(value ="/admin/artistaUpdate")
+    public RedirectView updateArtista(@ModelAttribute("artista") Artista artista,
+    		@RequestParam("image") MultipartFile multipartFile,
+    		Model model, BindingResult bindingResult) throws IOException {
+    	
+    	String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+    	artista.setPhotos(fileName);
+    	
+    	Artista savedArtista =this.artistaService.inserisci(artista);
+    	
+    	String uploadDir = "artista-photos/" + savedArtista.getId();
+    	
+    	FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+    	
+    	return new RedirectView("artisti");
+    }
+    
     @RequestMapping(value = "/admin/artisti", method = RequestMethod.GET)
     public String getArtisti2(Model model) {
     		model.addAttribute("artisti", this.artistaService.tutti());
@@ -104,12 +125,12 @@ public class ArtistaController {
     	model.addAttribute("artista", new Artista());
         return "artistaForm.html";
     }
-    @RequestMapping(value="/admin/modArtista{id}",method= RequestMethod.GET)
-    public String updateArtista(Long id, Model model) {
+    @RequestMapping(value="/admin/modArtista/{id}",method= RequestMethod.GET)
+    public String updateArtista(@PathVariable("id")Long id, Model model) {
     	logger.debug("UpdateArtista");
     	model.addAttribute("artista", this.artistaService.artistaPerId(id));
-
-        return "artistaForm.html";
+    	model.addAttribute("role", this.artistaService.getCredentialsService().getRoleAuthenticated());
+        return "artistaFormMod.html";
     }
     @RequestMapping(value="/admin/artista/{id}", method= RequestMethod.GET)
     public String removeArtista(@PathVariable("id")Long id, Model model) {

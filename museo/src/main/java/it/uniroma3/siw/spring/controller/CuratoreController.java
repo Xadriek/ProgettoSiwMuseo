@@ -11,7 +11,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -70,7 +69,7 @@ public class CuratoreController {
         }
         return "curatoreForm.html";
     }*/
-    @PostMapping("/admin/curatore")
+    @RequestMapping(value="/admin/curatore", method=RequestMethod.POST)
     public RedirectView newCuratore(@ModelAttribute("curatore") Curatore curatore,
     		@RequestParam("image") MultipartFile multipartFile,Model model, BindingResult bindingResult) throws IOException {
     	
@@ -88,6 +87,25 @@ public class CuratoreController {
     	return new RedirectView("curatori");
     	}
       return new RedirectView("curatoreForm");
+}
+    
+    @RequestMapping(value ="/admin/curatoreUpdate")
+    public RedirectView updateCuratore(@ModelAttribute("curatore") Curatore curatore,
+    		@RequestParam("image") MultipartFile multipartFile,
+    		Model model, BindingResult bindingResult) throws IOException {
+    	
+    	String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+    	curatore.setPhotos(fileName);
+    	
+    	Curatore savedCuratore =this.curatoreService.inserisci(curatore);
+    	
+    	String uploadDir = "curatore-photos/" + savedCuratore.getId();
+    	
+    	FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+    	
+    	return new RedirectView("curatori");
+    	
+
 }
     @RequestMapping(value = "/admin/curatori", method = RequestMethod.GET)
     public String getCuratori2(Model model) {

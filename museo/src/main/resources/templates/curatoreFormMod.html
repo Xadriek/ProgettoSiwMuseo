@@ -18,46 +18,48 @@
 		</div>
 		
 		
-	<form th:action="@{curatore}" method="POST" th:object="${curatore}" enctype="multipart/form-data">
+	<form th:action="@{/admin/curatoreUpdate}" method="POST" th:object="${curatore}" enctype="multipart/form-data" >
 		<div th:if="${#fields.hasGlobalErrors()}">
   			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 		</div>
 		<table>
     	<tr>
         <td>
+        	<h6 class="heading"><span>Id:<input type="text" th:field="*{id}" required/></span></h6>
+			
+        </td>
+        <td>
         	<h6 class="heading"><span>Nome:<input type="text" th:field="*{nome}" required/></span></h6>
-			<h6 class="heading"><span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span></h6>
+			
         </td>
         <td>
         	<h6 class="heading"><span>Cognome:<input type="text" th:field="*{cognome}" required/></span></h6>
-			<h6 class="heading"><span th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></span></h6>
         </td>
         <td>				
         	<h6 class="heading"><span>Data di nascita:<input type="text" th:field="*{dataDiNascita}" required /></span></h6>
-			<h6 class="heading"><span th:if="${#fields.hasErrors('dataDiNascita')}" th:errors="*{dataDiNascita}"></span></h6>
         </td>
     	</tr>
 
     	<tr>
         <td>
  			<h6 class="heading"><span>Luogo Nascita:<input type="text" th:field="*{luogoNascita}" required/></span></h6>
-			<h6 class="heading"><span th:if="${#fields.hasErrors('luogoNascita')}" th:errors="*{luogoNascita}"></span></h6>  
         </td>
         <td>
         	<h6 class="heading"><span>Email:<input type="text" th:field="*{email}" required/></span></h6>
-			<h6 class="heading"><span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span></h6>
 	      </td>
         <td>				
 			<h6 class="heading"><span>Telefono:<input type="text" th:field="*{telefono}" required/></span></h6>
-			<h6 class="heading"><span th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></span></h6>
         </td>
     	</tr>  
     	
     	<tr>  
     	<td>
     		<h6 class="heading"><span>Matricola:<input type="text" th:field="*{matricola}" required/></span></h6>
-			<h6 class="heading"><span th:if="${#fields.hasErrors('matricola')}" th:errors="*{matricola}"></span></h6>
     	</td>
+    	<td>
+  			<h6 class="heading"><span>Foto:<input type="file" name="image" accept="image/png, image/jpeg" />
+				</span></h6>    
+        </td>
         <td>
   			<h6 class="heading"><span></span></h6>      
         </td>

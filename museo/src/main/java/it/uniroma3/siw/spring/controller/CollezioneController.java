@@ -85,7 +85,7 @@ public class CollezioneController {
       return new RedirectView("collezioneForm");
     }
 
-    @RequestMapping(value ="/admin/collezioneUpdate")
+    @RequestMapping(value ="/admin/collezioneUpdate" , method = RequestMethod.GET)
     public RedirectView updateCollezione(@ModelAttribute("collezione") Collezione collezione,
     		@RequestParam("image") MultipartFile multipartFile,
     		Model model, BindingResult bindingResult) throws IOException {
